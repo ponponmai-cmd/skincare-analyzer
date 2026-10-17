@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { ProsSearchForm } from "@/components/pros-search";
 import { ingredients } from "@/lib/ingredients";
 import { products } from "@/lib/products";
 import { requireProduct } from "@/lib/catalog";
@@ -39,17 +39,10 @@ export default function HomePage() {
             <p className="mt-6 max-w-xl text-base leading-7 text-muted-foreground">
               膚鑑用皮膚科讀標籤的方式整理保養品：中英名稱、INCI、它實際在做的事、證據到哪裡、以及什麼情況下不該用。不同廠牌若只是把相近配方賣出很大價差，這裡會指出較便宜的那瓶少了什麼。
             </p>
-            <form action="/pros" className="mt-8 flex max-w-xl flex-col gap-2 sm:flex-row">
-              <Input
-                name="q"
-                placeholder="廠牌與品名，或成分。例如安耐曬、菸鹼醯胺"
-                aria-label="廠牌、品名或成分"
-                className="h-10 bg-card px-3"
-              />
-              <button type="submit" className={cn(buttonVariants({ className: "h-10 px-4" }))}>
-                看優缺點
-              </button>
-            </form>
+            <ProsSearchForm
+              placeholder="廠牌與品名，或成分。例如安耐曬、菸鹼醯胺"
+              className="mt-8 max-w-xl"
+            />
             <div className="mt-4 flex flex-col gap-3 sm:flex-row">
               <Link href="/dupes" className={cn(buttonVariants({ variant: "outline", className: "h-10 px-4" }))}>
                 找平價替代

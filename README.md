@@ -13,6 +13,18 @@ npm run dev
 
 開發伺服器會開在 [http://127.0.0.1:43123](http://127.0.0.1:43123)。
 
+## 公開網站
+
+推到 `main` 之後，`.github/workflows/pages.yml` 會自動建置靜態版並發布到 GitHub Pages：[ponponmai-cmd.github.io/skincare-analyzer](https://ponponmai-cmd.github.io/skincare-analyzer/)。
+
+本地重現同一份靜態版：
+
+```bash
+PAGES_BASE_PATH=/skincare-analyzer npx next build
+```
+
+輸出在 `out/`。
+
 ## 裡頭有什麼
 
 - 成分圖譜：中文、英文、INCI、機制、優點、代價、孕期與證據
