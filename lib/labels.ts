@@ -3,6 +3,7 @@ import type {
   Concern,
   Evidence,
   IngredientCategory,
+  Origin,
   Pregnancy,
   ProductCategory,
   RoleId,
@@ -54,6 +55,7 @@ export const ingredientCategoryLabel: Record<IngredientCategory, string> = {
   barrier: "屏障脂質",
   soothing: "舒緩",
   peptide: "胜肽",
+  antimicrobial: "抑菌抗痘",
   filter: "防曬過濾劑",
   base: "基底與標籤詞",
 };
@@ -126,9 +128,19 @@ export const ingredientCategoryOrder: IngredientCategory[] = [
   "barrier",
   "soothing",
   "peptide",
+  "antimicrobial",
   "filter",
   "base",
 ];
+
+export const originLabel: Record<Origin, string> = {
+  korea: "韓國",
+  taiwan: "台灣",
+  japan: "日本",
+  western: "歐美",
+};
+
+export const originOrder: Origin[] = ["korea", "taiwan", "japan", "western"];
 
 export const productCategoryOrder: ProductCategory[] = [
   "sunscreen",

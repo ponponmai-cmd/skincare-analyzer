@@ -1,6 +1,7 @@
+import { extraIngredients } from "./ingredients-extra";
 import type { Ingredient } from "./types";
 
-export const ingredients: Ingredient[] = [
+const coreIngredients: Ingredient[] = [
   {
     slug: "niacinamide",
     nameZh: "菸鹼醯胺",
@@ -1411,3 +1412,5 @@ export const ingredients: Ingredient[] = [
     ageNote: "全年齡的配方現實，不是需要升級的成分。",
   },
 ];
+
+export const ingredients: Ingredient[] = [...coreIngredients, ...extraIngredients];

@@ -2,16 +2,21 @@
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 import { SaveCompareButton } from "@/components/compare-store";
 import { EvidenceBadge, PregnancyBadge } from "@/components/marks";
+import { ShopLinks } from "@/components/shop-links";
 import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { productsContaining } from "@/lib/catalog";
 import { formatTwd, formatUnitPrice, formatVolume } from "@/lib/format";
-import { activeLabel, lookupVerdict } from "@/lib/lookup";
-import type { Ingredient, Product } from "@/lib/types";
+import { originLabel, originOrder, productCategoryLabel } from "@/lib/labels";
+import { activeLabel, lookupVerdict, type LookupResult } from "@/lib/lookup";
+import { productOrigin } from "@/lib/shopping";
+import type { Ingredient, Origin, Product } from "@/lib/types";
 import { cn } from "cn";
 
-const examples = ["修麗可 C E Ferulic", "寶拉 菸鹼醯胺", "安耐曬", "煙醯胺", "神經醯胺", "醉象"];
+const examples = ["美白", "痘痘", "保濕", "毛孔粗大", "菸鹼醯胺", "魚腥草", "青春露", "安耐曬"];
 
 export function ProsSearchForm({
   defaultValue = "",
@@ -37,11 +42,11 @@ export function ProsSearchForm({
         name="q"
         defaultValue={defaultValue}
         placeholder={placeholder}
-        aria-label="廠牌、品名或成分"
+        aria-label="想要的效果、成分或產品"
         className="h-10 bg-card px-3"
       />
       <button type="submit" className={cn(buttonVariants({ className: "h-10 px-4" }))}>
-        看優缺點
+        查詢
       </button>
     </form>
   );
@@ -56,7 +61,7 @@ export function ProsResults() {
     <>
       <ProsSearchForm
         defaultValue={query}
-        placeholder="例如：修麗可 C E Ferulic，或菸鹼醯胺"
+        placeholder="例如：美白、痘痘、菸鹼醯胺、青春露、安耐曬"
         className="mt-8 max-w-2xl"
       />
       <div className="mt-4 flex flex-wrap gap-2">
@@ -73,27 +78,35 @@ export function ProsResults() {
 
       {result.kind === "empty" ? (
         <p className="mt-10 max-w-2xl text-sm leading-6 text-muted-foreground">
-          先輸入兩個字以上。可以是廠牌加品名，也可以只打成分。
+          先輸入兩個字以上。可以打想要的效果（美白、痘痘、保濕），一個成分，或廠牌加品名。
         </p>
       ) : null}
 
       {result.kind === "vague" ? (
         <p className="mt-10 max-w-2xl text-sm leading-6">
-          「{result.query}」太寬，幾乎每一瓶都能套上。請加上廠牌或成分，例如「安耐曬」或「氧化鋅」。防曬也可以直接看{" "}
-          <Link href="/sunscreen" className="text-cinnabar">
-            依場合比較
-          </Link>
-          。
+          「{result.query}」太寬，幾乎每一瓶都能套上。請加上你想要的效果或成分，例如「保濕精華」或「菸鹼醯胺」。
         </p>
       ) : null}
 
       {result.kind === "none" ? (
         <p className="mt-10 max-w-2xl text-sm leading-6">
-          資料庫裡還沒有「{result.query}」。可以改打廠牌、品名，或一個成分名。沒有收錄的產品，膚鑑不會替它編優缺點。
+          資料庫裡還沒有「{result.query}」。可以改打效果、廠牌、品名或成分名。手上有成分表，也可以貼到{" "}
+          <Link href="/analyze" className="text-cinnabar">
+            成分表解析
+          </Link>
+          。沒有收錄的產品，膚鑑不會替它編優缺點。
         </p>
       ) : null}
 
-      {result.products.length > 0 ? (
+      {result.kind === "goal" ? <GoalResults result={result} /> : null}
+
+      {result.kind === "ingredient"
+        ? result.ingredients.map((ingredient) => (
+            <IngredientVerdict key={ingredient.slug} ingredient={ingredient} />
+          ))
+        : null}
+
+      {result.kind !== "goal" && result.products.length > 0 ? (
         <section className="mt-10">
           <h2 className="font-serif text-3xl">
             {result.kind === "product"
@@ -121,18 +134,150 @@ export function ProsResults() {
         </section>
       ) : null}
 
-      {result.ingredients.length > 0 && result.products.length === 0 ? (
+      {result.kind === "ingredient" && result.products.length === 0 ? (
         <p className="mt-10 max-w-2xl text-sm leading-6">
           {result.brandMatched
-            ? "這個廠牌的收錄產品裡，這個成分不是主軸。下面先給成分本身的優缺點。"
-            : "資料庫裡沒有以這個成分當主軸的產品。下面是成分本身的優缺點。"}
+            ? "這個廠牌的收錄產品裡，這個成分不是主軸。"
+            : "資料庫裡還沒有以這個成分當主軸的產品。"}
         </p>
       ) : null}
-
-      {result.ingredients.map((ingredient) => (
-        <IngredientVerdict key={ingredient.slug} ingredient={ingredient} />
-      ))}
     </>
+  );
+}
+
+function GoalResults({ result }: { result: LookupResult }) {
+  const [origin, setOrigin] = useState<Origin | "all">("all");
+  const goal = result.goal;
+  if (!goal) return null;
+  const shown = result.products.filter(
+    (product) => origin === "all" || productOrigin(product) === origin,
+  );
+  const counts = Object.fromEntries(
+    originOrder.map((item) => [
+      item,
+      result.products.filter((product) => productOrigin(product) === item).length,
+    ]),
+  ) as Record<Origin, number>;
+
+  return (
+    <div className="mt-10">
+      <p className="font-mono text-[11px] tracking-[0.16em] text-cinnabar uppercase">你想要的效果</p>
+      <h2 className="mt-2 font-serif text-3xl md:text-4xl">{goal.title}</h2>
+      <p className="mt-3 max-w-3xl text-sm leading-7">{goal.advice}</p>
+      <p className="mt-3 max-w-3xl border-l-2 border-cinnabar pl-4 text-sm leading-6 text-muted-foreground">
+        {goal.seeDoctor}
+      </p>
+
+      <section className="mt-10">
+        <h3 className="font-serif text-2xl">先看這些成分</h3>
+        <p className="mt-1 text-sm text-muted-foreground">由證據比較好、比較常用的排前面。點進去看濃度、用法與孕期。</p>
+        <div className="mt-4 grid gap-3 md:grid-cols-2">
+          {result.ingredients.slice(0, 8).map((ingredient) => (
+            <Link
+              key={ingredient.slug}
+              href={`/ingredients/${ingredient.slug}`}
+              className="border border-border bg-card p-4 hover:border-cinnabar"
+            >
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="font-serif text-xl">{ingredient.nameZh}</span>
+                <EvidenceBadge evidence={ingredient.evidence} />
+              </div>
+              <p className="mt-1 text-xs text-muted-foreground">{ingredient.inci}</p>
+              <p className="mt-2 text-sm leading-6">{ingredient.functions.join("、")}</p>
+              <p className="mt-1 text-xs text-muted-foreground">
+                常見濃度：{ingredient.typicalRange} · 收錄產品 {productsContaining(ingredient.slug).length} 瓶
+              </p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-10">
+        <h3 className="font-serif text-2xl">做得到這件事的產品（{result.products.length}）</h3>
+        <p className="mt-1 text-sm text-muted-foreground">
+          越對題的排越前面，同樣對題的再依每毫升價格由低到高。不同公司、成分接近的，會在產品頁的平價替代裡對照。
+        </p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <FilterChip active={origin === "all"} onClick={() => setOrigin("all")}>
+            全部 {result.products.length}
+          </FilterChip>
+          {originOrder
+            .filter((item) => counts[item] > 0)
+            .map((item) => (
+              <FilterChip key={item} active={origin === item} onClick={() => setOrigin(item)}>
+                {originLabel[item]} {counts[item]}
+              </FilterChip>
+            ))}
+        </div>
+        <ul className="mt-4 divide-y divide-border border-y border-border">
+          {shown.map((product) => (
+            <li key={product.slug} className="grid gap-3 py-4 md:grid-cols-[1fr_auto] md:items-center">
+              <div>
+                <p className="text-xs text-muted-foreground">
+                  {originLabel[productOrigin(product)]} · {productCategoryLabel[product.category]} · {product.brandZh}
+                </p>
+                <Link href={`/products/${product.slug}`} className="font-serif text-xl hover:text-cinnabar">
+                  {product.nameZh}
+                </Link>
+                <p className="mt-1 text-sm leading-6">
+                  <span className="text-sage">＋</span> {product.strengths[0]}
+                </p>
+                <p className="text-sm leading-6 text-muted-foreground">
+                  <span className="text-cinnabar">－</span> {product.weaknesses[0]}
+                </p>
+              </div>
+              <div className="flex flex-col gap-2 md:items-end">
+                <p className="text-sm">
+                  <span className="font-serif text-lg">{formatUnitPrice(product)}</span>
+                  <span className="text-muted-foreground">
+                    {" "}
+                    · {formatTwd(product.priceTwd)}／{formatVolume(product)}
+                  </span>
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <Link
+                    href={`/pros?q=${encodeURIComponent(`${product.brandZh} ${product.nameZh}`)}`}
+                    className={cn(buttonVariants({ variant: "outline", className: "h-9 px-3" }))}
+                  >
+                    優缺點
+                  </Link>
+                  <Link
+                    href={`/products/${product.slug}#price`}
+                    className={cn(buttonVariants({ variant: "outline", className: "h-9 px-3" }))}
+                  >
+                    比價
+                  </Link>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  );
+}
+
+function FilterChip({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={cn(
+        "border px-3 py-1.5 text-sm",
+        active ? "border-cinnabar bg-cinnabar text-white" : "border-border hover:border-cinnabar",
+      )}
+    >
+      {children}
+    </button>
   );
 }
 
@@ -146,7 +291,7 @@ function ProductVerdict({
   return (
     <article className="border border-border bg-card p-5">
       <p className="font-mono text-[11px] tracking-[0.16em] text-cinnabar uppercase">
-        {product.brand}
+        {originLabel[productOrigin(product)]} · {product.brand}
       </p>
       <h3 className="mt-2 font-serif text-3xl">{product.nameZh}</h3>
       <p className="mt-1 text-sm text-muted-foreground">
@@ -196,7 +341,14 @@ function ProductVerdict({
         >
           看較便宜的替代
         </Link>
+        <Link
+          href={`/products/${product.slug}#price`}
+          className={cn(buttonVariants({ variant: "outline", className: "h-9 px-3" }))}
+        >
+          冤大頭檢查
+        </Link>
       </div>
+      <ShopLinks product={product} className="mt-2" />
     </article>
   );
 }
@@ -213,6 +365,29 @@ function IngredientVerdict({ ingredient }: { ingredient: Ingredient }) {
         {ingredient.nameEn} · {ingredient.inci}
       </p>
       <p className="mt-3 max-w-3xl text-sm leading-6">{ingredient.summary}</p>
+      <h4 className="mt-6 font-serif text-2xl">功效</h4>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {ingredient.functions.map((item) => (
+          <span key={item} className="border border-cinnabar/40 px-2 py-0.5 text-sm">
+            {item}
+          </span>
+        ))}
+      </div>
+      <p className="mt-3 max-w-3xl text-sm leading-6">{ingredient.mechanism}</p>
+      <dl className="mt-4 grid max-w-3xl gap-3 text-sm leading-6 md:grid-cols-2">
+        <div>
+          <dt className="text-muted-foreground">常見濃度</dt>
+          <dd>{ingredient.typicalRange}</dd>
+        </div>
+        <div>
+          <dt className="text-muted-foreground">怎麼用</dt>
+          <dd>{ingredient.howToUse}</dd>
+        </div>
+        <div className="md:col-span-2">
+          <dt className="text-muted-foreground">證據</dt>
+          <dd>{ingredient.evidenceNote}</dd>
+        </div>
+      </dl>
       <div className="mt-6 grid gap-6 md:grid-cols-2">
         <section>
           <h4 className="font-serif text-2xl">優點</h4>

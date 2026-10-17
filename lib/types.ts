@@ -23,8 +23,11 @@ export type IngredientCategory =
   | "barrier"
   | "soothing"
   | "peptide"
+  | "antimicrobial"
   | "filter"
   | "base";
+
+export type Origin = "korea" | "taiwan" | "japan" | "western";
 
 export type ProductCategory =
   | "serum"

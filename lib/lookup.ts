@@ -1,9 +1,17 @@
 import { ingredientName } from "./catalog";
+import { goalLead, goalRoles, matchGoal, type Goal } from "./goals";
 import { ingredients } from "./ingredients";
 import { products } from "./products";
-import type { Ingredient, KeyActive, Product } from "./types";
+import type { Evidence, Ingredient, KeyActive, Product } from "./types";
 
-export type LookupKind = "empty" | "product" | "ingredient" | "brand" | "vague" | "none";
+export type LookupKind =
+  | "empty"
+  | "product"
+  | "ingredient"
+  | "brand"
+  | "goal"
+  | "vague"
+  | "none";
 
 export interface LookupResult {
   query: string;
@@ -12,6 +20,50 @@ export interface LookupResult {
   ingredients: Ingredient[];
   activesByProduct: Record<string, KeyActive[]>;
   brandMatched: boolean;
+  goal?: Goal;
+}
+
+const evidenceRank: Record<Evidence, number> = { strong: 0, moderate: 1, limited: 2, context: 3 };
+
+function unitPrice(product: Product) {
+  return product.priceTwd / product.volume;
+}
+
+export function goalIngredients(goal: Goal) {
+  const lead = goalLead[goal.concern];
+  const leadRank = (slug: string) => {
+    const index = lead.indexOf(slug);
+    return index === -1 ? lead.length : index;
+  };
+  return ingredients
+    .filter(
+      (item) =>
+        item.concerns.includes(goal.concern) &&
+        item.category !== "base" &&
+        (goal.concern === "sun" || item.category !== "filter"),
+    )
+    .sort(
+      (a, b) =>
+        leadRank(a.slug) - leadRank(b.slug) ||
+        evidenceRank[a.evidence] - evidenceRank[b.evidence] ||
+        a.concerns.indexOf(goal.concern) - b.concerns.indexOf(goal.concern) ||
+        a.irritancy - b.irritancy,
+    );
+}
+
+function goalFit(product: Product, goal: Goal) {
+  const roles = goalRoles[goal.concern];
+  return Math.max(0, ...product.roles.filter((role) => roles.includes(role.id)).map((role) => role.weight));
+}
+
+export function goalProducts(goal: Goal, pool: Product[] = products) {
+  return pool
+    .filter((product) => product.concerns.includes(goal.concern))
+    .sort(
+      (a, b) =>
+        Math.min(goalFit(b, goal), 4) - Math.min(goalFit(a, goal), 4) ||
+        unitPrice(a) - unitPrice(b),
+    );
 }
 
 const brandAliases: Record<string, string[]> = {
@@ -28,6 +80,17 @@ const brandAliases: Record<string, string[]> = {
   "Beauty of Joseon": ["朝鮮美女"],
   Isntree: ["伊思樹"],
   Illiyoon: ["一理潤"],
+  NARUKO: ["牛爾", "naruko"],
+  "DR.WU": ["達爾膚", "drwu"],
+  Neogence: ["霓淨思"],
+  "Curél": ["珂潤", "curel"],
+  "Kiehl's": ["契爾氏", "kiehls"],
+  "Estée Lauder": ["雅詩蘭黛", "estee"],
+  "Dear, Klairs": ["klairs"],
+  Torriden: ["torriden"],
+  Anua: ["anua"],
+  Medicube: ["medicube"],
+  "Dr.G": ["drg"],
 };
 
 const productAliases: Record<string, string[]> = {
@@ -39,9 +102,17 @@ const productAliases: Record<string, string[]> = {
   differin: ["達芙寧"],
   "uvmune-400": ["uvmune"],
   "biore-aqua-rich": ["含水防曬"],
+  "skii-fte": ["青春露", "pitera"],
+  "estee-anr": ["小棕瓶", "anr"],
+  "kiehls-ufc": ["冰河霜", "冰河醣蛋白", "ufc"],
+  "lrp-cicaplast": ["b5霜", "cicaplast", "b5修復霜"],
+  "torriden-dive-in": ["dive-in", "divein"],
+  "anua-heartleaf-toner": ["魚腥草化妝水"],
+  "cosrx-snail-96": ["蝸牛精華"],
+  "curel-cream": ["珂潤乳霜"],
 };
 
-const vagueQueries = new Set(["防曬", "防曬乳", "防曬霜", "精華", "精華液", "乳液", "乳霜", "化妝水", "保養品"]);
+const vagueQueries = new Set(["精華", "精華液", "乳液", "乳霜", "化妝水", "保養品", "保養"]);
 
 function compact(value: string) {
   return value
@@ -135,6 +206,20 @@ export function lookupVerdict(rawQuery: string): LookupResult {
   const queryIsIngredient = foundIngredients.some((ingredient) =>
     ingredientTerms(ingredient).some((term) => compact(term) === queryCompact),
   );
+
+  const goal = matchGoal(query);
+  if (goal && !queryIsIngredient && named.length === 0) {
+    const pool = branded.length > 0 ? branded.map((item) => item.product) : products;
+    return {
+      query,
+      kind: "goal",
+      goal,
+      products: goalProducts(goal, pool),
+      ingredients: goalIngredients(goal),
+      activesByProduct: {},
+      brandMatched: branded.length > 0,
+    };
+  }
 
   let chosen = named;
   let kind: LookupKind = "product";

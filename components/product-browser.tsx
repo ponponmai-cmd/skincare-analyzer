@@ -11,21 +11,26 @@ import {
   ageOrder,
   concernLabel,
   concernOrder,
+  originLabel,
+  originOrder,
   productCategoryLabel,
   productCategoryOrder,
 } from "@/lib/labels";
-import type { AgeBand, Concern, ProductCategory } from "@/lib/types";
+import { productOrigin } from "@/lib/shopping";
+import type { AgeBand, Concern, Origin, ProductCategory } from "@/lib/types";
 
 export function ProductBrowser() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<ProductCategory | "all">("all");
   const [concern, setConcern] = useState<Concern | "all">("all");
   const [age, setAge] = useState<AgeBand | "all">("all");
+  const [origin, setOrigin] = useState<Origin | "all">("all");
 
   const results = useMemo(() => {
     const needle = query.trim().toLowerCase();
     return products
       .filter((product) => {
+        if (origin !== "all" && productOrigin(product) !== origin) return false;
         if (category !== "all" && product.category !== category) return false;
         if (concern !== "all" && !product.concerns.includes(concern)) return false;
         if (age !== "all" && !product.ages.includes(age)) return false;
@@ -33,7 +38,7 @@ export function ProductBrowser() {
         return productHaystack(product).includes(needle);
       })
       .sort((a, b) => a.priceTwd / a.volume - b.priceTwd / b.volume);
-  }, [query, category, concern, age]);
+  }, [query, category, concern, age, origin]);
 
   return (
     <div>
@@ -42,10 +47,16 @@ export function ProductBrowser() {
         <Input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="例如：修麗可、傳明酸、安耐曬"
+          placeholder="例如：修麗可、COSRX、達爾膚、傳明酸"
           className="h-10 bg-card"
         />
       </label>
+      <ChipRow
+        label="產地"
+        value={origin}
+        onChange={setOrigin}
+        options={[["all", "全部"], ...originOrder.map((item) => [item, originLabel[item]] as const)]}
+      />
       <ChipRow
         label="種類"
         value={category}
@@ -85,6 +96,7 @@ export function ProductBrowser() {
             setCategory("all");
             setConcern("all");
             setAge("all");
+            setOrigin("all");
           }}
         >
           清除

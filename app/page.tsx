@@ -10,13 +10,15 @@ import { verdictLabel } from "@/lib/labels";
 import { cn } from "cn";
 
 const anchors = [
+  "skii-fte",
+  "estee-anr",
   "skinceuticals-ce-ferulic",
   "skinceuticals-discoloration",
-  "paulas-retinol-1",
-  "lala-retro",
-  "supergoop-unseen",
-  "anessa-milk",
+  "kiehls-ufc",
+  "drwu-hyaluronic",
 ];
+
+const goalChips = ["美白淡斑", "痘痘粉刺", "保濕", "修護敏感", "抗老細紋", "泛紅", "控油毛孔", "防曬"];
 
 export default function HomePage() {
   const featured = requireProduct("skinceuticals-ce-ferulic");
@@ -40,18 +42,26 @@ export default function HomePage() {
               膚鑑用皮膚科讀標籤的方式整理保養品：中英名稱、INCI、它實際在做的事、證據到哪裡、以及什麼情況下不該用。不同廠牌若只是把相近配方賣出很大價差，這裡會指出較便宜的那瓶少了什麼。
             </p>
             <ProsSearchForm
-              placeholder="廠牌與品名，或成分。例如安耐曬、菸鹼醯胺"
+              placeholder="想要的效果、成分或產品。例如美白、魚腥草、青春露"
               className="mt-8 max-w-xl"
             />
+            <div className="mt-4 flex max-w-xl flex-wrap gap-2">
+              {goalChips.map((goal) => (
+                <Link
+                  key={goal}
+                  href={`/pros?q=${encodeURIComponent(goal)}`}
+                  className="border border-border px-3 py-1.5 text-sm hover:border-cinnabar hover:text-cinnabar"
+                >
+                  {goal}
+                </Link>
+              ))}
+            </div>
             <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+              <Link href="/analyze" className={cn(buttonVariants({ className: "h-10 px-4" }))}>
+                貼成分表解析
+              </Link>
               <Link href="/dupes" className={cn(buttonVariants({ variant: "outline", className: "h-10 px-4" }))}>
                 找平價替代
-              </Link>
-              <Link
-                href="/sunscreen"
-                className={cn(buttonVariants({ variant: "outline", className: "h-10 px-4" }))}
-              >
-                先看防曬
               </Link>
             </div>
           </div>
@@ -92,9 +102,9 @@ export default function HomePage() {
         <h2 className="font-serif text-3xl">先把三件事分開</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           {[
-            ["成分", "中文、英文、INCI、功效、優點、代價、孕期與證據。", "/ingredients"],
-            ["產品連結", "同一工作若配方接近，就用每毫升價格排。缺的成分會寫出來。", "/dupes"],
-            ["場合", "年紀改變的是耐受與優先順序。防曬則要看過濾劑，不看植物故事。", "/ages"],
+            ["成分表解析", "貼上整串成分，逐項翻譯，標出功效成分排在哪裡、1% 線之後的點綴、香料與互相衝突的組合。", "/analyze"],
+            ["產品連結", "韓國、台灣、日本、歐美的瓶子放在一起，配方接近就用每毫升價格排。缺的成分會寫出來。", "/dupes"],
+            ["不當冤大頭", "每一瓶都有蝦皮、酷澎搜尋，把看到的價格填進去，立刻知道每毫升貴不貴、有沒有更便宜的近親。", "/products"],
           ].map(([title, body, href]) => (
             <Link key={title} href={href} className="border border-border p-5 hover:border-cinnabar">
               <h3 className="font-serif text-2xl">{title}</h3>

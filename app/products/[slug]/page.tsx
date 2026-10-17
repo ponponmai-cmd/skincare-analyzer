@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { DupeColumns } from "@/components/dupe-columns";
+import { PriceCheck } from "@/components/price-check";
+import { productOrigin } from "@/lib/shopping";
 import { SaveCompareButton } from "@/components/compare-store";
 import { PregnancyBadge } from "@/components/marks";
 import { buttonVariants } from "@/components/ui/button";
@@ -12,6 +14,7 @@ import { formatTwd, formatUnitPrice, formatVolume } from "@/lib/format";
 import {
   ageLabel,
   concernLabel,
+  originLabel,
   productCategoryLabel,
   skinLabel,
   whiteCastLabel,
@@ -56,7 +59,7 @@ async function ProductScreen({ params }: { params: Promise<{ slug: string }> }) 
   return (
     <div className="mx-auto max-w-6xl px-5 py-12">
       <p className="font-mono text-[11px] tracking-[0.16em] text-cinnabar uppercase">
-        {productCategoryLabel[product.category]} · {product.brand}
+        {originLabel[productOrigin(product)]} · {productCategoryLabel[product.category]} · {product.brand}
       </p>
       <h1 className="mt-3 max-w-3xl font-serif text-4xl leading-tight md:text-5xl">
         {product.nameZh}
@@ -108,6 +111,10 @@ async function ProductScreen({ params }: { params: Promise<{ slug: string }> }) 
       <blockquote className="mt-8 max-w-3xl border-l-2 border-cinnabar pl-4 text-sm leading-7">
         {product.expertNote}
       </blockquote>
+
+      <div id="price" className="mt-8 scroll-mt-24">
+        <PriceCheck product={product} />
+      </div>
 
       <div className="mt-8 grid gap-8 md:grid-cols-2">
         <section>

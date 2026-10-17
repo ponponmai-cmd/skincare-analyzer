@@ -1,9 +1,10 @@
+import { extraProducts } from "./products-extra";
 import type { Product } from "./types";
 
 const formula =
   "功效成分依品牌公開資料整理於 2026-10。完整 INCI 以包裝為準，防曬與熱門品項都會改版。";
 
-export const products: Product[] = [
+const coreProducts: Product[] = [
   {
     slug: "skinceuticals-ce-ferulic",
     brand: "SkinCeuticals",
@@ -1227,3 +1228,5 @@ export const products: Product[] = [
     sunscreenNote: "有色礦物。抗水仍需補擦，色號不對就換。",
   },
 ];
+
+export const products: Product[] = [...coreProducts, ...extraProducts];
