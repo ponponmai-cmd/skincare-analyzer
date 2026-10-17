@@ -15,6 +15,9 @@ export function SiteFooter() {
           <Link href="/method" className="hover:text-cinnabar">
             分數怎麼來的
           </Link>
+          <Link href="/pros" className="hover:text-cinnabar">
+            查產品優缺點
+          </Link>
           <Link href="/dupes" className="hover:text-cinnabar">
             找平價替代
           </Link>

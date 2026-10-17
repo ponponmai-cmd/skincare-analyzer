@@ -15,6 +15,7 @@ import { cn } from "cn";
 const links = [
   ["/ingredients", "成分"],
   ["/products", "產品"],
+  ["/pros", "優缺點"],
   ["/dupes", "平價替代"],
   ["/compare", "並排"],
   ["/sunscreen", "防曬"],
