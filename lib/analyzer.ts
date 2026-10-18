@@ -1,4 +1,5 @@
 import { inciDictionary, type InciEntry, type InciFlag } from "./inci-dictionary";
+import { inciDictionaryMore } from "./inci-dictionary-more";
 import { ingredients } from "./ingredients";
 import { products } from "./products";
 import type { Concern, Ingredient, Product } from "./types";
@@ -89,7 +90,7 @@ function register(term: string, match: RowMatch, allowOverride = false) {
   }
 }
 
-for (const entry of inciDictionary) {
+for (const entry of [...inciDictionary, ...inciDictionaryMore]) {
   const match: RowMatch = { kind: "dict", entry };
   [entry.inci, entry.zh, ...(entry.aliases ?? [])].forEach((term) => register(term, match));
 }
@@ -114,6 +115,10 @@ export function splitList(text: string) {
 export function matchTerm(raw: string): RowMatch {
   for (const variant of [raw, withoutParens(raw)]) {
     const exact = exactIndex.get(key(variant));
+    if (exact) return exact;
+  }
+  for (const piece of raw.split(/[/|\\]/)) {
+    const exact = exactIndex.get(key(piece)) ?? exactIndex.get(key(withoutParens(piece)));
     if (exact) return exact;
   }
   const k = key(raw);
