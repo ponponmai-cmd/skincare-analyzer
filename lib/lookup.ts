@@ -30,17 +30,18 @@ function unitPrice(product: Product) {
 }
 
 export function goalIngredients(goal: Goal) {
-  const lead = goalLead[goal.concern];
+  const lead = goal.lead ?? goalLead[goal.concern];
   const leadRank = (slug: string) => {
     const index = lead.indexOf(slug);
     return index === -1 ? lead.length : index;
   };
   return ingredients
-    .filter(
-      (item) =>
-        item.concerns.includes(goal.concern) &&
-        item.category !== "base" &&
-        (goal.concern === "sun" || item.category !== "filter"),
+    .filter((item) =>
+      goal.lead
+        ? goal.lead.includes(item.slug)
+        : item.concerns.includes(goal.concern) &&
+          item.category !== "base" &&
+          (goal.concern === "sun" || item.category !== "filter"),
     )
     .sort(
       (a, b) =>
@@ -53,15 +54,31 @@ export function goalIngredients(goal: Goal) {
 
 function goalFit(product: Product, goal: Goal) {
   const roles = goalRoles[goal.concern];
-  return Math.max(0, ...product.roles.filter((role) => roles.includes(role.id)).map((role) => role.weight));
+  const roleFit = Math.max(0, ...product.roles.filter((role) => roles.includes(role.id)).map((role) => role.weight));
+  if (!goal.lead) return roleFit;
+  const lead = goal.lead;
+  const leadFit = Math.max(
+    0,
+    ...product.keyActives
+      .filter((active) => lead.slice(0, goal.scope === "body" ? lead.length : 3).includes(active.ingredient))
+      .map((active) => active.centrality * (goal.scope === "body" ? 1 - lead.indexOf(active.ingredient) * 0.12 : 1)),
+  );
+  return goal.scope === "body" ? Math.max(leadFit, Math.min(roleFit, 3)) : Math.max(roleFit, leadFit);
 }
 
 export function goalProducts(goal: Goal, pool: Product[] = products) {
+  const scope = goal.scope ?? "face";
   return pool
-    .filter((product) => product.concerns.includes(goal.concern))
+    .filter((product) => (product.category === "body") === (scope === "body"))
+    .filter((product) =>
+      goal.scope === "body"
+        ? product.concerns.includes(goal.concern) || goalFit(product, goal) >= 4
+        : product.concerns.includes(goal.concern),
+    )
     .sort(
       (a, b) =>
-        Math.min(goalFit(b, goal), 4) - Math.min(goalFit(a, goal), 4) ||
+        Math.min(goalFit(b, goal), goal.scope === "body" ? 5 : 4) -
+          Math.min(goalFit(a, goal), goal.scope === "body" ? 5 : 4) ||
         unitPrice(a) - unitPrice(b),
     );
 }

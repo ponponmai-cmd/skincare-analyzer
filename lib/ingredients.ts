@@ -1,3 +1,4 @@
+import { extraAliases } from "./ingredient-aliases";
 import { extraIngredients } from "./ingredients-extra";
 import type { Ingredient } from "./types";
 
@@ -1413,4 +1414,7 @@ const coreIngredients: Ingredient[] = [
   },
 ];
 
-export const ingredients: Ingredient[] = [...coreIngredients, ...extraIngredients];
+export const ingredients: Ingredient[] = [...coreIngredients, ...extraIngredients].map((item) => ({
+  ...item,
+  aliases: [...new Set([...item.aliases, ...(extraAliases[item.slug] ?? [])])],
+}));

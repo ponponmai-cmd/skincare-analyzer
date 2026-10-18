@@ -32,12 +32,18 @@ function searchTerm(product: Product) {
   return `${product.brandZh === product.brand ? product.brand : product.brandZh} ${product.nameZh}`;
 }
 
-export function shopeeUrl(product: Product) {
-  return `https://shopee.tw/search?keyword=${encodeURIComponent(searchTerm(product))}`;
+function google(query: string) {
+  return `https://www.google.com/search?q=${encodeURIComponent(query)}`;
 }
 
-export function coupangUrl(product: Product) {
-  return `https://www.tw.coupang.com/search?q=${encodeURIComponent(searchTerm(product))}`;
+export function shopLinks(product: Product) {
+  const term = searchTerm(product);
+  return [
+    { label: "Google 比價", href: `https://www.google.com/search?tbm=shop&q=${encodeURIComponent(term)}` },
+    { label: "Google 找蝦皮", href: google(`${term} site:shopee.tw`) },
+    { label: "Google 找酷澎", href: google(`${term} site:tw.coupang.com`) },
+    { label: "到 momo 搜尋", href: `https://www.momoshop.com.tw/search/searchShop.jsp?keyword=${encodeURIComponent(term)}` },
+  ];
 }
 
 export type PriceVerdict = "low" | "fair" | "high" | "overpay";

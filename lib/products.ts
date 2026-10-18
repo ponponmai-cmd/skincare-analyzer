@@ -1,4 +1,5 @@
 import { extraProducts } from "./products-extra";
+import { moreProducts } from "./products-more";
 import type { Product } from "./types";
 
 const formula =
@@ -1229,4 +1230,8 @@ const coreProducts: Product[] = [
   },
 ];
 
-export const products: Product[] = [...coreProducts, ...extraProducts];
+const luxurySlugs = new Set(["skii-fte", "estee-anr"]);
+
+export const products: Product[] = [...coreProducts, ...extraProducts, ...moreProducts].map((product) =>
+  luxurySlugs.has(product.slug) ? { ...product, tier: "luxury" as const } : product,
+);

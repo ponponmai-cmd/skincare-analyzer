@@ -34,7 +34,8 @@ export type ProductCategory =
   | "moisturizer"
   | "sunscreen"
   | "toner"
-  | "treatment";
+  | "treatment"
+  | "body";
 
 export type SkinType = "dry" | "oily" | "combination" | "sensitive" | "normal";
 
@@ -116,6 +117,9 @@ export interface Product {
   keyActives: KeyActive[];
   roles: RoleWeight[];
   formulaNote: string;
+  tier?: "luxury";
+  howToUse?: string;
+  officialUrl?: string;
   spf?: number;
   pa?: string;
   whiteCast?: WhiteCast;

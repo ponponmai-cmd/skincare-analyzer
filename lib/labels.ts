@@ -66,6 +66,7 @@ export const productCategoryLabel: Record<ProductCategory, string> = {
   sunscreen: "防曬",
   toner: "化妝水",
   treatment: "藥品型外用",
+  body: "身體乳",
 };
 
 export const skinLabel: Record<SkinType, string> = {
@@ -148,4 +149,5 @@ export const productCategoryOrder: ProductCategory[] = [
   "treatment",
   "moisturizer",
   "toner",
+  "body",
 ];
