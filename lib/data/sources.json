@@ -93,11 +93,11 @@
    "salesText": "總銷量>3,000",
    "rating": "4.9",
    "ratingTimes": "117",
-   "image": "https://img3.momoshop.com.tw/goodsimg/0015/411/102/15411102_OL.jpg?t=1792060861"
+   "image": "https://img2.momoshop.com.tw/goodsimg/0015/411/102/15411102_OL.jpg?t=1792060861"
   },
   "image": {
-   "url": "https://img3.momoshop.com.tw/goodsimg/0015/411/102/15411102_OL.jpg?t=1792060861",
-   "source": "momo"
+   "url": "https://img.shoplineapp.com/media/image_clips/6a278748d0341f2fdce6c75f/original.jpg",
+   "source": "霓淨思官網"
   }
  },
  "lamer-creme": {
@@ -226,51 +226,51 @@
   "image": {
    "url": "https://incidecoder-content.storage.googleapis.com/b4a31cf1-b506-4fa5-a81c-6e616b0a4ba4/products/paulas-choice-c15-super-booster-3/paulas-choice-c15-super-booster-3_front_photo_original.jpeg",
    "source": "INCIDecoder"
-  },
-  "momo": {
-   "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=12891007",
-   "name": "【PAULA’S CHOICE 寶拉珍選】美肌透白組★2％水楊酸精華液＋C15縮時亮白抗氧精萃",
-   "price": 2210,
-   "sales": 100000,
-   "salesText": "總銷量>10萬",
-   "rating": "4.7",
-   "ratingTimes": "36",
-   "image": "https://img3.momoshop.com.tw/goodsimg/0012/891/007/12891007_OL.jpg?t=1770255662"
   }
  },
  "melano-cc": {
   "fetchedAt": "2026-10-18",
   "inci": {
-   "url": "https://incidecoder.com/products/rohto-mentholatum-melano-cc-whitening-essence",
-   "title": "Rohto Mentholatum Melano CC Whitening Essence",
+   "url": "https://incidecoder.com/products/rotho-mentholatum-melano-cc",
+   "title": "Rotho mentholatum Melano CC",
    "list": [
-    "Ascorbic Acid",
-    "Tocopheryl Acetate",
-    "Dipotassium",
-    "O-Cymen-5-Ol",
-    "Ethoxydiglycol",
-    "Butylene Glycol",
-    "Water",
-    "Acrylates/​C10-30 Alkyl Acrylate Crosspolymer",
-    "Fragrance",
-    "Ascorbyl Tetraisopalmitate",
+    "Ascorbic Acid (Active Vitamin C)",
+    "Pyridoxine Hydrochloride (Vitamin B6)",
+    "Allantoin",
+    "Isopropyl Methylphenol",
+    "3-O-Ethyl Ascorbic Acid",
+    "L-Ascorbic Acid 2-Glucoside (Ascorbic Acid)",
+    "Vitamin C Tetraisopalmitate",
+    "Vitamin E",
     "Alpinia Katsumadai Seed Extract",
-    "Disodium EDTA"
+    "Lemon Extract",
+    "Grapefruit Extract",
+    "Serine",
+    "BG",
+    "1,3-Propanediol",
+    "3-Methyl-1,3-Butanediol",
+    "Pg",
+    "PEG-8",
+    "Absolute Ethanol",
+    "Poe-Pop Decyl Tetradecyl Ether",
+    "Na Pyrosulfite",
+    "Edetate",
+    "Fragrance"
    ]
   },
   "image": {
-   "url": "https://incidecoder-content.storage.googleapis.com/e43ad956-3ef0-461c-803c-3694710d4913/products/rohto-mentholatum-melano-cc-whitening-essence/rohto-mentholatum-melano-cc-whitening-essence_front_photo_original.jpeg",
+   "url": "https://incidecoder-content.storage.googleapis.com/4a9c36a9-89e8-42a4-a445-667013671316/products/rotho-mentholatum-melano-cc/rotho-mentholatum-melano-cc_front_photo_original.jpeg",
    "source": "INCIDecoder"
   },
   "momo": {
-   "url": " https://www.momoshop.com.tw/TP/TP0009192/goodsDetail/TP00091920000432",
-   "name": "【樂敦】Melano CC Men 男士藥用淡斑精華液 20ml",
-   "price": 710,
+   "url": " https://www.momoshop.com.tw/TP/TP0009192/goodsDetail/TP00091920000435",
+   "name": "【樂敦】Melano CC 藥用淡斑精華液 20ml",
+   "price": 700,
    "sales": 0,
    "salesText": "",
    "rating": "0.0",
    "ratingTimes": "0",
-   "image": "https://i7.momoshop.com.tw/1776787878/goodsimg/TP000/9192/0000/432/TP00091920000432_O_m.jpg"
+   "image": "https://i6.momoshop.com.tw/1776786896/goodsimg/TP000/9192/0000/435/TP00091920000435_O_m.jpg"
   }
  },
  "the-ordinary-niacinamide": {
@@ -1319,14 +1319,14 @@
    "source": "INCIDecoder"
   },
   "momo": {
-   "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=13039869",
-   "name": "【Biore 蜜妮】含水防曬水珠噴霧(60mlx2入組)",
-   "price": 598,
-   "sales": 1000,
-   "salesText": "總銷量>1,000",
-   "rating": "5.0",
-   "ratingTimes": "30",
-   "image": "https://img4.momoshop.com.tw/goodsimg/0013/039/869/13039869_OL.jpg?t=1724735389"
+   "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=14367802",
+   "name": "【Biore 蜜妮】含水防曬水肌記憶水凝乳",
+   "price": 359,
+   "sales": 100,
+   "salesText": "總銷量>100",
+   "rating": "4.7",
+   "ratingTimes": "9",
+   "image": "https://img2.momoshop.com.tw/goodsimg/0014/367/802/14367802_OL.jpg?t=1768398273"
   }
  },
  "boj-relief-sun": {
@@ -1760,6 +1760,28 @@
  },
  "cosrx-galactomyces": {
   "fetchedAt": "2026-10-18",
+  "inci": {
+   "url": "https://incidecoder.com/products/cosrx-galactomyces-95-tone-balancing-essence",
+   "title": "COSRX Galactomyces 95 Tone Balancing Essence",
+   "list": [
+    "Galactomyces Ferment Filtrate",
+    "Niacinamide",
+    "Panthenol",
+    "Glycerin",
+    "1,2-Hexanediol",
+    "Butylene Glycol",
+    "Betaine",
+    "Sodium Hyaluronate",
+    "Allantoin",
+    "Xanthan Gum",
+    "Ethyl Hexanediol",
+    "Adenosine"
+   ]
+  },
+  "image": {
+   "url": "https://incidecoder-content.storage.googleapis.com/ac8298d4-f08f-49bc-80c3-f7c270aade3b/products/cosrx-galactomyces-95-tone-balancing-essence/cosrx-galactomyces-95-tone-balancing-essence_front_photo_original.jpeg",
+   "source": "INCIDecoder"
+  },
   "momo": {
    "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=12162534",
    "name": "【COSRX】95%覆膜酵母亮白精華100ml",
@@ -1769,10 +1791,6 @@
    "rating": "4.9",
    "ratingTimes": "62",
    "image": "https://img3.momoshop.com.tw/goodsimg/0012/162/534/12162534_OL.jpg?t=1701324125"
-  },
-  "image": {
-   "url": "https://img3.momoshop.com.tw/goodsimg/0012/162/534/12162534_OL.jpg?t=1701324125",
-   "source": "momo"
   }
  },
  "skii-fte": {
@@ -1995,7 +2013,47 @@
   }
  },
  "boj-glow-serum": {
-  "fetchedAt": "2026-10-18"
+  "fetchedAt": "2026-10-18",
+  "inci": {
+   "url": "https://incidecoder.com/products/beauty-of-joseon-glow-serum-propolis-niacinamide",
+   "title": "Beauty of Joseon Glow Serum: Propolis+Niacinamide",
+   "list": [
+    "Propolis Extract",
+    "Dipropylene Glycol",
+    "Glycerin",
+    "Butylene Glycol",
+    "Water",
+    "Niacinamide",
+    "1,2-Hexanediol",
+    "Melia Azadirachta Flower Extract",
+    "Melia Azadirachta Leaf Extract",
+    "Sodium Hyaluronate",
+    "Curcuma Longa (Turmeric) Root Extract",
+    "Ocimum Sanctum Leaf Extract",
+    "Theobroma Cacao (Cocoa) Seed Extract",
+    "Melaleuca Alternifolia (Tea Tree) Extract",
+    "Centella Asiatica Extract",
+    "Corallina Officinalis Extract",
+    "Lotus Corniculatus Seed Extract",
+    "Calophyllum Inophyllum Seed Oil",
+    "Betaine Salicylate",
+    "Sodium Polyacryloyldimethyl Taurate",
+    "Tromethamine",
+    "Polyglyceryl-10 Laurate",
+    "Caprylyl Glycol",
+    "Ethylhexylglycerin",
+    "Dextrin",
+    "Pentylene Glycol",
+    "Octanediol",
+    "Tocopherol",
+    "Xanthan Gum",
+    "Carbomer"
+   ]
+  },
+  "image": {
+   "url": "https://incidecoder-content.storage.googleapis.com/2163bfdb-ff76-45d0-a5dc-dead45e035f1/products/beauty-of-joseon-glow-serum-propolis-niacinamide/beauty-of-joseon-glow-serum-propolis-niacinamide_front_photo_original.jpeg",
+   "source": "INCIDecoder"
+  }
  },
  "aestura-atobarrier": {
   "fetchedAt": "2026-10-18",
@@ -2096,16 +2154,6 @@
   "image": {
    "url": "https://incidecoder-content.storage.googleapis.com/6008488c-904d-467c-bdb6-4cd593a2e58e/products/la-roche-posay-cicaplast-baume-b5-5/la-roche-posay-cicaplast-baume-b5-5_front_photo_original.jpeg",
    "source": "INCIDecoder"
-  },
-  "momo": {
-   "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=15170548",
-   "name": "【理膚寶水】太空防曬修復組★全護極致抗油光防曬亮白乳 UVA PRO 30ml+B5全面修復霜 40ml_B",
-   "price": 1260,
-   "sales": 500000,
-   "salesText": "總銷量>50萬",
-   "rating": "4.8",
-   "ratingTimes": "10",
-   "image": "https://img3.momoshop.com.tw/goodsimg/0015/170/548/15170548_OL.jpg?t=1789780392"
   }
  },
  "skin1004-centella-ampoule": {
@@ -2126,16 +2174,6 @@
   "image": {
    "url": "https://incidecoder-content.storage.googleapis.com/a28e267d-19a2-46cf-929b-06ad42baec7f/products/skin1004-madagascar-centella-ampoule/skin1004-madagascar-centella-ampoule_front_photo_original.jpeg",
    "source": "INCIDecoder"
-  },
-  "momo": {
-   "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=14442492",
-   "name": "【Skin1004】官方直營 馬達加斯加積雪草{安瓶}10%煙☆胺增效(美白毛孔護理精華 30ml)",
-   "price": 918,
-   "sales": 0,
-   "salesText": "",
-   "rating": "5.0",
-   "ratingTimes": "1",
-   "image": "https://img4.momoshop.com.tw/goodsimg/0014/442/492/14442492_OL.jpg?t=1757679229"
   }
  },
  "medicube-pdrn": {
@@ -2335,45 +2373,104 @@
    "salesText": "總銷量>500",
    "rating": "4.9",
    "ratingTimes": "51",
-   "image": "https://img3.momoshop.com.tw/goodsimg/0009/331/829/9331829_OL.jpg?t=1788431581"
+   "image": "https://img2.momoshop.com.tw/goodsimg/0009/331/829/9331829_OL.jpg?t=1788431581"
   },
   "image": {
-   "url": "https://img3.momoshop.com.tw/goodsimg/0009/331/829/9331829_OL.jpg?t=1788431581",
+   "url": "https://img2.momoshop.com.tw/goodsimg/0009/331/829/9331829_OL.jpg?t=1788431581",
    "source": "momo"
   }
  },
  "drwu-mandelic-18": {
   "fetchedAt": "2026-10-18",
-  "momo": {
-   "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=14955204",
-   "name": "【DR.WU 達爾膚】杏仁酸亮白煥膚精華18% 30ML(3入組)",
-   "price": 2733,
-   "sales": 150000,
-   "salesText": "總銷量>15萬",
-   "rating": "4.9",
-   "ratingTimes": "100",
-   "image": "https://img2.momoshop.com.tw/goodsimg/0014/955/204/14955204_OL.jpg?t=1791857742"
+  "inci": {
+   "url": "https://incidecoder.com/products/dr-wu-intensive-renewal-serum-with-mandelic-acid-18",
+   "title": "Dr. Wu Intensive Renewal Serum With Mandelic Acid 18%",
+   "list": [
+    "Aqua",
+    "Propylene Glycol",
+    "Mandelic Acid",
+    "Butylene Glycol",
+    "Triethanolamine",
+    "Beta-Glucan",
+    "Ruscus Aculeatus Root Extract",
+    "Panthenol",
+    "Centella Asiatica Extract",
+    "Sodium Hyaluronate",
+    "Hydrolyzed Yeast Protein",
+    "Disodium EDTA",
+    "Dipotassium Glycyrrhizate",
+    "Calendula Officinalis Flower Extract",
+    "Allantoin",
+    "Ammonium Glycyrrhizate",
+    "Aesculus Hippocastanum Extract"
+   ]
   },
   "image": {
-   "url": "https://img2.momoshop.com.tw/goodsimg/0014/955/204/14955204_OL.jpg?t=1791857742",
-   "source": "momo"
+   "url": "https://incidecoder-content.storage.googleapis.com/81cae771-762f-464b-bf4a-a494d1d5baa4/products/dr-wu-intensive-renewal-serum-with-mandelic-acid-18/dr-wu-intensive-renewal-serum-with-mandelic-acid-18_front_photo_original.jpeg",
+   "source": "INCIDecoder"
+  },
+  "momo": {
+   "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=13591538",
+   "name": "【DR.WU 達爾膚】杏仁酸亮白煥膚精華18% 30ML",
+   "price": 1156,
+   "sales": 50000,
+   "salesText": "總銷量>5萬",
+   "rating": "4.8",
+   "ratingTimes": "97",
+   "image": "https://img4.momoshop.com.tw/goodsimg/0013/591/538/13591538_OL.jpg?t=1787191969"
   }
  },
  "drwu-hyaluronic": {
   "fetchedAt": "2026-10-18",
-  "momo": {
-   "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=14955206",
-   "name": "【DR.WU 達爾膚】玻尿酸保濕精華液30ML(3入組)",
-   "price": 2733,
-   "sales": 150000,
-   "salesText": "總銷量>15萬",
-   "rating": "4.9",
-   "ratingTimes": "180",
-   "image": "https://img2.momoshop.com.tw/goodsimg/0014/955/206/14955206_OL.jpg?t=1790127746"
+  "inci": {
+   "url": "https://incidecoder.com/products/dr-wu-hyalucmplx-intensive-hydrating-serum-with-hyaluronic-acid",
+   "title": "Dr. Wu Hyalucmplx Intensive Hydrating Serum With Hyaluronic Acid",
+   "list": [
+    "Aqua",
+    "Butylene Glycol",
+    "Mannitol",
+    "Pentylene Glycol",
+    "Phenoxyethanol",
+    "Chondrus Crispus Extract",
+    "Hydrolyzed Yeast Extract",
+    "Triethanolamine",
+    "Carbomer",
+    "Chlorphenesin",
+    "Propylene Glycol",
+    "PEG-40 Hydrogenated Castor Oil",
+    "Disodium EDTA",
+    "Glycolipids",
+    "Sodium Hyaluronate",
+    "Allantoin",
+    "Yeast Extract",
+    "Prunus Amygdalus Dulcis Protein",
+    "Disodium Phosphate",
+    "Cetyl Hydroxyethylcellulose",
+    "Sodium Dehydroacetate",
+    "Citric Acid",
+    "Hydrolyzed Hyaluronic Acid",
+    "Polyglucuronic Acid",
+    "Alpinia Galanga Extract",
+    "Disodium Succinate",
+    "Potassium Phosphate",
+    "Caprylic/​Capric Triglyceride",
+    "Lecithin",
+    "Xanthan Gum"
+   ]
   },
   "image": {
-   "url": "https://img2.momoshop.com.tw/goodsimg/0014/955/206/14955206_OL.jpg?t=1790127746",
-   "source": "momo"
+   "url": "https://incidecoder-content.storage.googleapis.com/02e5746d-e6d8-4656-b49c-12920a605c2f/products/dr-wu-hyalucmplx-intensive-hydrating-serum-with-hyaluronic-acid/dr-wu-hyalucmplx-intensive-hydrating-serum-with-hyaluronic-acid_front_photo_original.jpeg",
+   "source": "INCIDecoder"
+  },
+  "momo": {
+   "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=13591530",
+   "name": "【DR.WU 達爾膚】玻尿酸保濕精華液30ML",
+   "price": 1156,
+   "sales": 50000,
+   "salesText": "總銷量>5萬",
+   "rating": "4.8",
+   "ratingTimes": "61",
+   "image": "https://img4.momoshop.com.tw/goodsimg/0013/591/530/13591530_OL.jpg?t=1790127934"
   }
  },
  "neogence-ha": {
@@ -2386,10 +2483,10 @@
    "salesText": "總銷量>100",
    "rating": "5.0",
    "ratingTimes": "13",
-   "image": "https://img1.momoshop.com.tw/goodsimg/0015/511/650/15511650_OL.jpg?t=1785122369"
+   "image": "https://img3.momoshop.com.tw/goodsimg/0015/511/650/15511650_OL.jpg?t=1785122369"
   },
   "image": {
-   "url": "https://img1.momoshop.com.tw/goodsimg/0015/511/650/15511650_OL.jpg?t=1785122369",
+   "url": "https://img3.momoshop.com.tw/goodsimg/0015/511/650/15511650_OL.jpg?t=1785122369",
    "source": "momo"
   }
  },
@@ -2494,66 +2591,67 @@
  "estee-anr": {
   "fetchedAt": "2026-10-18",
   "inci": {
-   "url": "https://incidecoder.com/products/estee-lauder-advanced-night-repair-rescue-solution",
-   "title": "Estée Lauder Advanced Night Repair Rescue Solution",
+   "url": "https://incidecoder.com/products/estee-lauder-advanced-night-repair-synchronized-multi-recovery-complex",
+   "title": "Estée Lauder Advanced Night Repair Synchronized Multi-Recovery Complex",
    "list": [
     "Water\\Aqua\\Eau",
     "Bifida Ferment Lysate",
     "PEG-8",
-    "Butylene Glycol",
-    "Glycerin",
-    "Polysorbate 80",
+    "Propanediol",
     "Bis-PEG-18 Methyl Ether Dimethyl Silane",
+    "Methyl Gluceth-20",
+    "Glycereth-26",
+    "PEG-75",
+    "Butylene Glycol",
+    "Adansonia Digitata Seed Extract",
     "Tripeptide-32",
-    "Hydrolyzed Yeast Protein",
-    "Lactobacillus Ferment",
     "Sodium Hyaluronate",
-    "Caffeine",
-    "Hypnea Musciformis Extract",
-    "Citrullus Lanatus (Watermelon) Fruit Extract",
-    "Lens Esculenta (Lentil) Fruit Extract",
-    "Pyrus Malus (Apple) Fruit Extract",
-    "Magnolia Grandiflora Bark Extract",
-    "Polygonum Cuspidatum Root Extract",
-    "Poria Cocos Sclerotium Extract",
-    "Silybum Marianum (Lady'S Thistle) Extract",
-    "Sapindus Mukorossi Fruit Extract",
+    "Yeast Extract\\Faex\\Extrait De Levure",
+    "Lactobacillus Ferment",
+    "Cola Acuminata (Kola) Seed Extract",
     "Anthemis Nobilis (Chamomile) Flower Extract",
-    "Sodium Lactate",
-    "Ethylhexylglycerin",
-    "Potassium Gluconate",
-    "Sodium PCA",
-    "Caesalpinia Spinosa Gum",
-    "Sucrose",
+    "Hydrolyzed Algin",
+    "Pantethine",
+    "Caffeine",
+    "Lecithin",
+    "Sodium Rna",
+    "Bisabolol",
+    "Squalane",
+    "Glycerin",
+    "Oleth-3 Phosphate",
     "Caprylyl Glycol",
-    "Hexylene Glycol",
+    "Oleth-3",
+    "Oleth-5",
+    "Choleth-24",
+    "Hydrogenated Lecithin",
+    "Jojoba Wax PEG-120 Esters",
+    "Ceteth-24",
+    "Tocopheryl Acetate",
     "Carbomer",
-    "Xanthan Gum",
-    "PPG-6-Decyltetradeceth-30",
-    "PPG-5-Ceteth-20",
+    "Triethanolamine",
+    "Tetrasodium EDTA",
     "BHT",
-    "Disodium EDTA",
-    "Sodium Hydroxide",
+    "Xanthan Gum",
     "Potassium Sorbate",
+    "Disodium EDTA",
     "Phenoxyethanol",
-    "Sodium Benzoate",
     "Red 4 (Ci 14700)",
     "Yellow 5 (Ci 19140)"
    ]
   },
   "image": {
-   "url": "https://incidecoder-content.storage.googleapis.com/7db0e070-7468-4d19-9c6b-927d20c991d3/products/estee-lauder-advanced-night-repair-rescue-solution/estee-lauder-advanced-night-repair-rescue-solution_front_photo_original.jpeg",
+   "url": "https://incidecoder-content.storage.googleapis.com/eafe5c7e-7d84-411c-84a6-aa8a027c9859/products/estee-lauder-advanced-night-repair-synchronized-multi-recovery-complex/estee-lauder-advanced-night-repair-synchronized-multi-recovery-complex_front_photo_original.jpeg",
    "source": "INCIDecoder"
   },
   "momo": {
-   "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=14562485",
-   "name": "【Estee Lauder 雅詩蘭黛】特潤超導全方位修護露50ml雙件組(No.1小棕瓶 彈嫩發光/精華液)",
-   "price": 8100,
-   "sales": 50000,
-   "salesText": "總銷量>5萬",
+   "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=11560785",
+   "name": "【Estee Lauder 雅詩蘭黛】特潤超導全方位修護露30ml(No.1小棕瓶/精華液/醫美術後/無酒精)",
+   "price": 2800,
+   "sales": 15000,
+   "salesText": "總銷量>1.5萬",
    "rating": "4.9",
-   "ratingTimes": "21",
-   "image": "https://img3.momoshop.com.tw/goodsimg/0014/562/485/14562485_OL.jpg?t=1792121367"
+   "ratingTimes": "354",
+   "image": "https://img3.momoshop.com.tw/goodsimg/0011/560/785/11560785_OL.jpg?t=1792121335"
   }
  },
  "paulas-bha": {
@@ -2622,7 +2720,11 @@
   }
  },
  "neogence-peptide-10": {
-  "fetchedAt": "2026-10-18"
+  "fetchedAt": "2026-10-18",
+  "image": {
+   "url": "https://img.shoplineapp.com/media/image_clips/6ab4ddcfa7d1268428a5bb4f/original.jpg",
+   "source": "霓淨思官網"
+  }
  },
  "neogence-retinol-body": {
   "fetchedAt": "2026-10-18",
@@ -2634,11 +2736,11 @@
    "salesText": "總銷量>100",
    "rating": "5.0",
    "ratingTimes": "13",
-   "image": "https://img4.momoshop.com.tw/goodsimg/0015/411/097/15411097_OL.jpg?t=1783921577"
+   "image": "https://img2.momoshop.com.tw/goodsimg/0015/411/097/15411097_OL.jpg?t=1783921577"
   },
   "image": {
-   "url": "https://img4.momoshop.com.tw/goodsimg/0015/411/097/15411097_OL.jpg?t=1783921577",
-   "source": "momo"
+   "url": "https://img.shoplineapp.com/media/image_clips/697c255160fdaab24e45103d/original.jpg",
+   "source": "霓淨思官網"
   }
  },
  "ordinary-glycolic-7": {
@@ -2709,56 +2811,37 @@
  "lancome-genifique": {
   "fetchedAt": "2026-10-18",
   "inci": {
-   "url": "https://incidecoder.com/products/lancome-advanced-genifique-sensitive-antioxidant-serum",
-   "title": "Lancôme Advanced Génifique Sensitive Antioxidant Serum",
+   "url": "https://incidecoder.com/products/lancome-advanced-genifique-youth-activating-concentrate",
+   "title": "Lancôme Advanced Génifique Youth Activating Concentrate",
    "list": [
-    "Dipropylene Glycol",
-    "Tocopherol",
-    "Ferulic Acid",
-    "Isopropyl Lauroyl Sarcosinate",
-    "Ci 60730/​Ext. Violet 2",
-    "Coco-Betaine",
-    "Arginine",
-    "Centaurea Cyanus Flower Water",
-    "Propanediol",
-    "Citric Acid",
     "Water",
-    "Styrene/​Acrylates Copolymer",
     "Bifida Ferment Lysate",
     "Glycerin",
-    "Betaine",
-    "Ananas Sativus Fruit Extract/​Pineapple Fruit Extract",
-    "T-Butyl Alcohol",
-    "Lactobacillus Ferment",
-    "Sodium Citrate",
+    "Alcohol Denat.",
+    "Dimethicone",
+    "Hydroxyethylpiperazine Ethane Sulfonic Acid",
+    "Ascorbyl Glucoside",
     "Sodium Hyaluronate",
-    "Madecassoside",
+    "Sodium Hydroxide",
     "Sodium Benzoate",
-    "Hydrolyzed Wheat Protein",
-    "Sodium Dehydroacetate",
-    "Sodium Succinate",
     "Phenoxyethanol",
-    "Faex Extract/​Yeast Extract",
     "Adenosine",
-    "Caffeine",
-    "PPG-6-Decyltetradeceth-30",
-    "PEG-32",
-    "Chlorphenesin",
-    "Ammonium Polyacryloyldimethyl Taurate",
+    "Faex Extract/​Yeast Extract/​Extrait De Levure",
+    "Peg-20 Methyl Glucose Sesquistearate",
+    "Peg-60 Hydrogenated Castor Oil",
+    "Salicyloyl Phytosphingosine",
+    "Ammonium Polyacryldimethyltauramide/​Ammonium Polyacryloyldimethyl Taurate",
+    "Limonene",
     "Xanthan Gum",
-    "Pentylene Glycol",
-    "Leontopodium Alpinum Extract",
     "Caprylyl Glycol",
-    "Papain",
-    "Disodium EDTA",
-    "Potassium Sorbate",
-    "Methionine",
-    "Glycine",
+    "Disodium Edta",
+    "Octyldodecanol",
+    "Citronellol",
     "Fragrance"
    ]
   },
   "image": {
-   "url": "https://incidecoder-content.storage.googleapis.com/4bd7b7aa-a922-499c-8104-47e1648214c5/products/lancome-advanced-genifique-sensitive-antioxidant-serum/lancome-advanced-genifique-sensitive-antioxidant-serum_front_photo_original.jpeg",
+   "url": "https://incidecoder-content.storage.googleapis.com/5e0ebc88-08cd-4548-96f2-d6c5edbe892b/products/lancome-advanced-genifique-youth-activating-concentrate/lancome-advanced-genifique-youth-activating-concentrate_front_photo_original.jpeg",
    "source": "INCIDecoder"
   },
   "momo": {
@@ -2769,7 +2852,7 @@
    "salesText": "總銷量>5,000",
    "rating": "5.0",
    "ratingTimes": "53",
-   "image": "https://img3.momoshop.com.tw/goodsimg/0015/738/066/15738066_OL.jpg?t=1792115213"
+   "image": "https://img1.momoshop.com.tw/goodsimg/0015/738/066/15738066_OL.jpg?t=1792115213"
   }
  },
  "shiseido-ultimune": {
@@ -2831,16 +2914,6 @@
   "image": {
    "url": "https://incidecoder-content.storage.googleapis.com/55e863a0-333f-4f81-99b4-0521f403656f/products/shiseido-ultimune-power-infusing-serum-2025/shiseido-ultimune-power-infusing-serum-2025_front_photo_original.jpeg",
    "source": "INCIDecoder"
-  },
-  "momo": {
-   "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=12970731",
-   "name": "【SHISEIDO 資生堂國際櫃】紅妍超導循環護手霜 50mL(保濕/手部保養)",
-   "price": 1080,
-   "sales": 100,
-   "salesText": "總銷量>100",
-   "rating": "4.7",
-   "ratingTimes": "28",
-   "image": "https://img3.momoshop.com.tw/goodsimg/0012/970/731/12970731_OL.jpg?t=1791424805"
   }
  },
  "sulwhasoo-first-care": {
@@ -2922,19 +2995,100 @@
  },
  "cpb-la-creme": {
   "fetchedAt": "2026-10-18",
-  "momo": {
-   "url": " https://www.momoshop.com.tw/TP/TP0009171/goodsDetail/TP00091710000135",
-   "name": "Cle De Peau Beaute 肌膚之鑰 新版 精萃光采修護精華霜II 50g 日本境內版",
-   "price": 1250,
-   "sales": 0,
-   "salesText": "",
-   "rating": "5.0",
-   "ratingTimes": "1",
-   "image": "https://i7.momoshop.com.tw/1784661538/goodsimg/TP000/9171/0000/135/TP00091710000135_O_m.webp"
+  "inci": {
+   "url": "https://incidecoder.com/products/cle-de-peau-la-creme",
+   "title": "Cle de Peau La Crème",
+   "list": [
+    "Water(Aqua/​Eau)",
+    "Pentaerythrityl Tetraethylhexanoate",
+    "Glycerin",
+    "Butylene Glycol",
+    "Triisostearin",
+    "Squalane",
+    "Behenyl Alcohol",
+    "Trehalose",
+    "Isodecyl Neopentanoate",
+    "Petrolatum",
+    "Dimethicone",
+    "Maltitol",
+    "Potassium Methoxysalicylate",
+    "Hydrogenated Polyisobutene",
+    "Stearyl Alcohol",
+    "Myristyl Myristate",
+    "Beheneth-20",
+    "Phenoxyethanol",
+    "Butyrospermum Parkii (Shea) Butter",
+    "Silica",
+    "Theanine",
+    "Dimethylacrylamide/​Sodium Acryloyldimethyltaurate Crosspolymer",
+    "Microcrystalline Wax(Cera Microcristallina/​Cire Microcristalline)",
+    "Caprylic/​Capric Triglyceride",
+    "Phytosteryl Macadamiate",
+    "Trisodium EDTA",
+    "Polyvinyl Alcohol",
+    "PEG/​PPG-14/​7 Dimethyl Ether",
+    "PEG/​PPG-17/​4 Dimethyl Ether",
+    "Tocopheryl Acetate",
+    "Fragrance (Parfum)",
+    "Retinyl Acetate",
+    "Sodium Citrate",
+    "Helianthus Annuus (Sunflower) Seed Oil",
+    "Alcohol",
+    "BHT",
+    "Hydrogenated Vegetable Oil",
+    "Citric Acid",
+    "Sodium Metabisulfite",
+    "Sodium Metaphosphate",
+    "Ectoin",
+    "Dipotassium Glycyrrhizate",
+    "Iron Oxides (Ci 77492)",
+    "Alpha-Isomethyl Ionone",
+    "Citronellol",
+    "Glycyrrhiza Glabra (Licorice) Root Extract",
+    "Linalool",
+    "Lilium Candidum Bulb Extract",
+    "Geraniol",
+    "Angelica Acutiloba Root Extract",
+    "Benzyl Benzoate",
+    "Hydrolyzed Silk",
+    "Limonene",
+    "Olea Europaea (Olive) Leaf Extract",
+    "Iris Florentina Root Extract",
+    "Paeonia Albiflora Root Extract",
+    "Sanguisorba Officinalis Root Extract",
+    "Crataegus Monogyna Flower Extract",
+    "Fagus Sylvatica Bud Extract",
+    "Panax Ginseng Root Extract",
+    "Glycine",
+    "Rubus Suavissimus (Raspberry) Leaf Extract",
+    "Inositol",
+    "Tocopherol",
+    "Pinus Sylvestris Cone Extract",
+    "Camellia Sinensis Leaf Extract",
+    "Rosmarinus Officinalis (Rosemary) Leaf Extract (Rosmarinus Officinalis Leaf Extract)",
+    "Iron Oxides (Ci 77491)",
+    "Rosa Canina Fruit Extract",
+    "Perilla Ocymoides Leaf Extract",
+    "Serine",
+    "Zingiber Aromaticus Extract",
+    "Sodium Acetylated Hyaluronate",
+    "Isostearic Acid",
+    "Hydrolyzed Yeast",
+    "Benzoic Acid",
+    "Hydrolyzed Conchiolin Protein",
+    "Lauryl Betaine",
+    "Potentilla Erecta Root Extract",
+    "Polysorbate 20",
+    "Uncaria Gambir Extract",
+    "Sodium Carboxymethyl Beta-Glucan",
+    "Centaurea Cyanus Flower Extract",
+    "Bupleurum Falcatum Root Extract",
+    "Sodium Benzoate"
+   ]
   },
   "image": {
-   "url": "https://i7.momoshop.com.tw/1784661538/goodsimg/TP000/9171/0000/135/TP00091710000135_O_m.webp",
-   "source": "momo"
+   "url": "https://incidecoder-content.storage.googleapis.com/32033518-fa40-42bf-94af-dd5e6134e183/products/cle-de-peau-la-creme/cle-de-peau-la-creme_front_photo_original.jpeg",
+   "source": "INCIDecoder"
   }
  },
  "cerave-sa-cream": {
@@ -3149,23 +3303,85 @@
  },
  "curel-body-lotion": {
   "fetchedAt": "2026-10-18",
-  "momo": {
-   "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=10811936",
-   "name": "【Curel 珂潤官方直營】潤浸保濕身體乳液3入組(官方直營/220ml*3)",
-   "price": 1304,
-   "sales": 8000,
-   "salesText": "總銷量>8,000",
-   "rating": "5.0",
-   "ratingTimes": "42",
-   "image": "https://img4.momoshop.com.tw/goodsimg/0010/811/936/10811936_OL.jpg?t=1782489629"
+  "inci": {
+   "url": "https://incidecoder.com/products/curel-fragrance-free-comforting-body-lotion-for-dry-sensitive-skin",
+   "title": "Curél Fragrance Free Comforting Body Lotion For Dry, Sensitive Skin",
+   "list": [
+    "Water",
+    "Glycerin",
+    "Distearyldimonium Chloride",
+    "Petrolatum",
+    "Isopropyl Palmitate",
+    "Cetyl Alcohol",
+    "Dimethicone",
+    "Methylparaben",
+    "Ethylparaben",
+    "Sodium Chloride",
+    "Cetyl-Pg Hydroxyethyl Palmitamide",
+    "Butylene Glycol",
+    "Eucalyptus Globulus Leaf Extract",
+    "Sodium Lauroyl Lactylate",
+    "Gelatin",
+    "Acacia Senegal Gum",
+    "Cholesterol",
+    "Ceramide NP",
+    "Ceramide AP",
+    "Phytosphingosine",
+    "Carbomer",
+    "Xanthan Gum",
+    "Ceramide EOP"
+   ]
   },
   "image": {
-   "url": "https://img4.momoshop.com.tw/goodsimg/0010/811/936/10811936_OL.jpg?t=1782489629",
-   "source": "momo"
+   "url": "https://incidecoder-content.storage.googleapis.com/6edf4453-878e-46e1-82f1-7a94d3d48b12/products/curel-fragrance-free-comforting-body-lotion-for-dry-sensitive-skin/curel-fragrance-free-comforting-body-lotion-for-dry-sensitive-skin_front_photo_original.jpeg",
+   "source": "INCIDecoder"
+  },
+  "momo": {
+   "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=8125217",
+   "name": "【Curel 珂潤官方直營】潤浸保濕身體乳液(官方直營/220ml)",
+   "price": 411,
+   "sales": 1000,
+   "salesText": "總銷量>1,000",
+   "rating": "4.9",
+   "ratingTimes": "44",
+   "image": "https://img3.momoshop.com.tw/goodsimg/0008/125/217/8125217_OL.jpg?t=1772415153"
   }
  },
  "paulas-body-aha": {
   "fetchedAt": "2026-10-18",
+  "inci": {
+   "url": "https://incidecoder.com/products/paulas-choice-resist-revealing-body-lotion-with-10-aha",
+   "title": "Paula's Choice Resist Revealing Body Lotion With 10% Aha",
+   "list": [
+    "Water",
+    "Glycolic Acid (Alpha Hydroxy Acid/​Exfoliant)",
+    "Cyclopentasiloxane (Hydration)",
+    "Dimethicone (Hydration)",
+    "Glycerin (Hydration/​Skin Replenishing)",
+    "Glyceryl Stearate (Texture-Enhancing)",
+    "Stearic Acid (Texture-Enhancing)",
+    "Cetyl Alcohol (Texture-Enhancing)",
+    "Butyrospermum Parkii (Shea Butter/​Emollient/​Antioxidant)",
+    "Sodium Hydroxide (Ph Adjuster)",
+    "PEG-100 Stearate (Texture-Enhancing)",
+    "Tetrahexyldecyl Ascorbate (Stabilized Vitamin C/​Antioxidant)",
+    "Tocopheryl Acetate (Vitamin E/​Antioxidant)",
+    "Chamomilla Recutita Matricaria Flower Extract (Chamomile Extract/​Skin-Soothing)",
+    "Vitis Vinifera Seed Oil (Grape Extract/​Non-Fragrant Oil/​Emollient/​Antioxidant)",
+    "Camellia Oleifera Extract (Green Tea Extract/​Antioxidant)",
+    "Epilobium Angustifolium Flower/​Leaf/​Stem Extract (Willow Herb Extract (Skin-Soothing)",
+    "Allantoin (Skin-Soothing)",
+    "Butylene Glycol (Hydration)",
+    "Xanthan Gum (Texture-Enhancing)",
+    "Disodium EDTA (Stabilizer)",
+    "Sodium Benzoate (Preservative)",
+    "Phenoxyethanol (Preservative)"
+   ]
+  },
+  "image": {
+   "url": "https://incidecoder-content.storage.googleapis.com/eb205ff8-8596-4fbe-b671-1a6e2353c8dd/products/paulas-choice-paulas-choice-resist-revealing-body-lotion-with-10-aha/paulas-choice-paulas-choice-resist-revealing-body-lotion-with-10-aha_front_photo_original.jpeg",
+   "source": "INCIDecoder"
+  },
   "momo": {
    "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=6783467",
    "name": "【PAULA’S CHOICE 寶拉珍選】10%果酸身體乳210ml(拋光/滑嫩/保濕/去角質)",
@@ -3175,10 +3391,6 @@
    "rating": "4.9",
    "ratingTimes": "580",
    "image": "https://img3.momoshop.com.tw/goodsimg/0006/783/467/6783467_OL.jpg?t=1778610603"
-  },
-  "image": {
-   "url": "https://img3.momoshop.com.tw/goodsimg/0006/783/467/6783467_OL.jpg?t=1778610603",
-   "source": "momo"
   }
  },
  "kiehls-creme-de-corps": {

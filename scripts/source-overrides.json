@@ -1,0 +1,98 @@
+{
+  "estee-anr": {
+    "incidecoder": "estee-lauder-advanced-night-repair-synchronized-multi-recovery-complex"
+  },
+  "lancome-genifique": {
+    "incidecoder": "lancome-advanced-genifique-youth-activating-concentrate"
+  },
+  "cosrx-galactomyces": {
+    "incidecoder": "cosrx-galactomyces-95-tone-balancing-essence"
+  },
+  "boj-glow-serum": {
+    "incidecoder": "beauty-of-joseon-glow-serum-propolis-niacinamide"
+  },
+  "drwu-mandelic-18": {
+    "incidecoder": "dr-wu-intensive-renewal-serum-with-mandelic-acid-18"
+  },
+  "drwu-hyaluronic": {
+    "incidecoder": "dr-wu-hyalucmplx-intensive-hydrating-serum-with-hyaluronic-acid"
+  },
+  "cpb-la-creme": {
+    "incidecoder": "cle-de-peau-la-creme",
+    "momoMustInclude": [
+      "乳霜"
+    ]
+  },
+  "curel-body-lotion": {
+    "incidecoder": "curel-fragrance-free-comforting-body-lotion-for-dry-sensitive-skin"
+  },
+  "paulas-body-aha": {
+    "incidecoder": "paulas-choice-resist-revealing-body-lotion-with-10-aha"
+  },
+  "melano-cc": {
+    "incidecoder": "rotho-mentholatum-melano-cc",
+    "momoExclude": [
+      "Men",
+      "男士",
+      "男性"
+    ]
+  },
+  "skin1004-centella-ampoule": {
+    "incidecoder": "skin1004-madagascar-centella-ampoule",
+    "momoSkip": true
+  },
+  "biore-aqua-rich": {
+    "momoExclude": [
+      "噴霧",
+      "噴"
+    ]
+  },
+  "lrp-cicaplast": {
+    "momoMustInclude": [
+      "修復霜"
+    ],
+    "momoExclude": [
+      "防曬",
+      "化妝水",
+      "組",
+      "+"
+    ]
+  },
+  "shiseido-ultimune": {
+    "momoExclude": [
+      "護手",
+      "手霜"
+    ]
+  },
+  "paulas-c15": {
+    "momoExclude": [
+      "BHA",
+      "水楊酸",
+      "A醛",
+      "＋",
+      "+",
+      "組"
+    ]
+  },
+  "neogence-retinol-18": {
+    "incidecoder": null,
+    "image": {
+      "url": "https://img.shoplineapp.com/media/image_clips/6a278748d0341f2fdce6c75f/original.jpg",
+      "source": "霓淨思官網"
+    }
+  },
+  "neogence-peptide-10": {
+    "incidecoder": null,
+    "image": {
+      "url": "https://img.shoplineapp.com/media/image_clips/6ab4ddcfa7d1268428a5bb4f/original.jpg",
+      "source": "霓淨思官網"
+    }
+  },
+  "neogence-retinol-body": {
+    "incidecoder": null,
+    "image": {
+      "url": "https://img.shoplineapp.com/media/image_clips/697c255160fdaab24e45103d/original.jpg",
+      "source": "霓淨思官網"
+    }
+  }
+}

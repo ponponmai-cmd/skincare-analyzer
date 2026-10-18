@@ -28,6 +28,9 @@ interface Override {
   incidecoder?: string | null;
   momoQuery?: string;
   momoMustInclude?: string[];
+  momoExclude?: string[];
+  momoSkip?: boolean;
+  image?: { url: string; source: string };
 }
 
 const overrides: Record<string, Override> = existsSync(OVERRIDES)
@@ -133,11 +136,13 @@ async function readMomo(product: Product, override?: Override) {
     const flat = name.toLowerCase().replace(/[^a-z0-9\u3400-\u9fff]/g, "");
     if (!brandKeys.some((key) => key.length >= 2 && flat.includes(key))) continue;
     if (override?.momoMustInclude && !override.momoMustInclude.every((word) => name.includes(word))) continue;
+    if (override?.momoExclude?.some((word) => name.includes(word))) continue;
     const grams = bigrams(name);
     const overlap = [...target].filter((gram) => grams.has(gram)).length / Math.max(target.size, 1);
     if (overlap < 0.45) continue;
     const sales = parseSales(item[4]);
-    const score = overlap + Math.log10(sales + 1) * 0.05;
+    const isSet = /組|\+|套組|禮盒|買\d送/.test(name);
+    const score = overlap + Math.log10(sales + 1) * 0.05 - (isSet ? 0.15 : 0);
     if (!best || score > best.score) {
       best = {
         url: item[5].split("&Area=")[0],
@@ -177,8 +182,9 @@ async function main() {
       }
     }
 
-    entry.momo = await readMomo(product, override);
+    entry.momo = override?.momoSkip ? undefined : await readMomo(product, override);
     await sleep(700);
+    if (override?.image) entry.image = override.image;
     if (!entry.image && entry.momo?.image) entry.image = { url: entry.momo.image, source: "momo" };
 
     result[product.slug] = entry;
