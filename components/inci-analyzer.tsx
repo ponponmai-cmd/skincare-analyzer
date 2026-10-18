@@ -3,12 +3,14 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
+import { InciExplainTable, type ExplainRow } from "@/components/inci-explain-table";
 import { EvidenceBadge } from "@/components/marks";
 import { Button } from "@/components/ui/button";
 import { analyze, displayName, type AnalyzedRow } from "@/lib/analyzer";
 import { ingredientName } from "@/lib/catalog";
 import { formatUnitPrice } from "@/lib/format";
 import { inciFlagLabel, inciFlagNote, type InciFlag } from "@/lib/inci-dictionary";
+import { explainInci, tfdaSource } from "@/lib/inci-explain";
 import { concernLabel, ingredientCategoryLabel, irritancyLabel, originLabel } from "@/lib/labels";
 import { productOrigin } from "@/lib/shopping";
 import type { Ingredient, IngredientCategory } from "@/lib/types";
@@ -93,6 +95,7 @@ export function InciAnalyzer() {
 function AnalysisView({ analysis }: { analysis: ReturnType<typeof analyze> }) {
   const warnings = warnFlags.filter((flag) => analysis.flagCounts[flag]?.length);
   const active = new Set(analysis.actives.map((row) => row.position));
+  const rows = analysis.rows.map((row) => toExplainRow(row, active.has(row.position), analysis.onePercentLine));
 
   return (
     <div className="mt-10 grid gap-10">
@@ -229,80 +232,34 @@ function AnalysisView({ analysis }: { analysis: ReturnType<typeof analyze> }) {
       ) : null}
 
       <section>
-        <h3 className="font-serif text-2xl">逐項翻譯</h3>
-        <div className="mt-4 overflow-x-auto">
-          <table className="w-full min-w-[640px] text-left text-sm">
-            <thead className="border-b border-border text-xs text-muted-foreground">
-              <tr>
-                <th className="py-2 pr-3 font-normal">#</th>
-                <th className="py-2 pr-3 font-normal">成分表寫法</th>
-                <th className="py-2 pr-3 font-normal">中文</th>
-                <th className="py-2 pr-3 font-normal">用途</th>
-                <th className="py-2 font-normal">提醒</th>
-              </tr>
-            </thead>
-            <tbody>
-              {analysis.rows.map((row) => (
-                <Row key={row.position} row={row} isActive={active.has(row.position)} line={analysis.onePercentLine} />
-              ))}
-            </tbody>
-          </table>
+        <h3 className="font-serif text-2xl">逐項翻譯：功效與注意事項</h3>
+        <p className="mt-1 max-w-3xl text-sm leading-6 text-muted-foreground">
+          台灣規定來自衛福部食藥署公開的
+          <a href={tfdaSource.url} target="_blank" rel="noreferrer" className="text-cinnabar">
+            {tfdaSource.name}
+          </a>
+          。灰字的功效是依成分類別推估。
+          {analysis.onePercentLine !== null ? "紅線以下的成分濃度通常在 1% 以下。" : ""}
+        </p>
+        <div className="mt-4">
+          <InciExplainTable rows={rows} />
         </div>
       </section>
     </div>
   );
 }
 
-function Row({ row, isActive, line }: { row: AnalyzedRow; isActive: boolean; line: number | null }) {
-  const role =
-    row.match.kind === "core"
-      ? row.match.ingredient.functions.join("、")
-      : row.match.kind === "dict"
-        ? row.match.entry.role
-        : "膚鑑還沒收錄";
-  const note = row.match.kind === "dict" ? row.match.entry.note : undefined;
-  return (
-    <tr
-      className={cn(
-        "border-b border-border align-top",
-        line !== null && row.position === line + 2 && "border-t-2 border-t-cinnabar",
-      )}
-    >
-      <td className="py-2 pr-3 text-muted-foreground">{row.position}</td>
-      <td className="py-2 pr-3">{row.raw}</td>
-      <td className={cn("py-2 pr-3", isActive && "font-medium text-cinnabar")}>
-        {row.match.kind === "core" ? (
-          <Link href={`/ingredients/${row.match.ingredient.slug}`} className="underline-offset-2 hover:underline">
-            {displayName(row)}
-          </Link>
-        ) : row.match.kind === "dict" ? (
-          displayName(row)
-        ) : (
-          <span className="text-muted-foreground">—</span>
-        )}
-      </td>
-      <td className="py-2 pr-3">
-        {role}
-        {note ? <span className="block text-xs text-muted-foreground">{note}</span> : null}
-      </td>
-      <td className="py-2">
-        <div className="flex flex-wrap gap-1">
-          {row.flags.map((flag) => (
-            <span
-              key={flag}
-              className={cn(
-                "border px-1.5 text-xs",
-                flag === "preservative" ? "border-border text-muted-foreground" : "border-cinnabar/60 text-cinnabar",
-              )}
-            >
-              {inciFlagLabel[flag]}
-            </span>
-          ))}
-          {row.belowOnePercent ? <span className="text-xs text-muted-foreground">約 ≤1%</span> : null}
-        </div>
-      </td>
-    </tr>
-  );
+function toExplainRow(row: AnalyzedRow, isActive: boolean, line: number | null): ExplainRow {
+  const explanation = explainInci(row.raw);
+  const zh = explanation.zh ?? (row.match.kind === "unknown" ? undefined : displayName(row));
+  return {
+    ...explanation,
+    zh,
+    position: row.position,
+    highlight: isActive,
+    tags: row.belowOnePercent ? ["約 ≤1%"] : undefined,
+    lineBefore: line !== null && row.position === line + 2,
+  };
 }
 
 const doseCriticalCategories = new Set<IngredientCategory>([

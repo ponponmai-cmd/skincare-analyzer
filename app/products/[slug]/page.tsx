@@ -10,6 +10,8 @@ import { TierBadges } from "@/components/tier-badges";
 import { howToUseFor } from "@/lib/how-to-use";
 import { ratingCriteria } from "@/lib/ratings";
 import { productSource } from "@/lib/sources";
+import { InciExplainTable } from "@/components/inci-explain-table";
+import { explainInci, tfdaSource } from "@/lib/inci-explain";
 import { PriceCheck } from "@/components/price-check";
 import { productOrigin } from "@/lib/shopping";
 import { SaveCompareButton } from "@/components/compare-store";
@@ -182,7 +184,7 @@ async function ProductScreen({ params }: { params: Promise<{ slug: string }> }) 
         <p className="mt-3 text-sm leading-6 text-muted-foreground">{product.formulaNote}</p>
       </section>
 
-      <FullInci slug={product.slug} />
+      <FullInci slug={product.slug} actives={product.keyActives.map((active) => active.ingredient)} />
 
       {product.spf ? (
         <section className="mt-8 grid gap-3 border border-border p-5 text-sm leading-6 md:grid-cols-4">
@@ -216,7 +218,7 @@ async function ProductScreen({ params }: { params: Promise<{ slug: string }> }) 
   );
 }
 
-function FullInci({ slug }: { slug: string }) {
+function FullInci({ slug, actives }: { slug: string; actives: string[] }) {
   const inci = productSource(slug)?.inci;
   if (!inci) {
     return (
@@ -225,24 +227,41 @@ function FullInci({ slug }: { slug: string }) {
         <Link href="/analyze" className="text-cinnabar underline">
           成分表解析
         </Link>
-        。
+        ，一樣會列出每個成分的功效與注意事項。
       </p>
     );
   }
+  const rows = inci.list.map((raw, index) => {
+    const explanation = explainInci(raw);
+    return {
+      ...explanation,
+      position: index + 1,
+      highlight: Boolean(explanation.ingredientSlug && actives.includes(explanation.ingredientSlug)),
+    };
+  });
   return (
-    <details className="mt-6 border border-border p-4">
-      <summary className="cursor-pointer font-serif text-xl">完整成分表（{inci.list.length} 項）</summary>
-      <p className="mt-3 text-sm leading-7">{inci.list.join("、")}</p>
-      <p className="mt-3 text-xs text-muted-foreground">
-        來源：
+    <section className="mt-10">
+      <h2 className="font-serif text-3xl">完整成分表：每個成分在做什麼</h2>
+      <p className="mt-2 max-w-3xl text-sm leading-6 text-muted-foreground">
+        依成分表順序排列，越前面通常含量越高。紅字是這瓶的主成分。「台灣規定」來自食藥署公告的成分使用限制，合法販售的產品都必須在上限以內。
+      </p>
+      <div className="mt-4">
+        <InciExplainTable rows={rows} />
+      </div>
+      <p className="mt-3 text-xs leading-5 text-muted-foreground">
+        成分表來源：
         <a href={inci.url} target="_blank" rel="noopener noreferrer" className="underline">
           INCIDecoder · {inci.title}
         </a>
-        。海外版與台灣版偶有差異，以包裝為準。
+        （海外版與台灣版偶有差異，以包裝為準）。法規來源：
+        <a href={tfdaSource.url} target="_blank" rel="noopener noreferrer" className="underline">
+          {tfdaSource.name}
+        </a>
+        。灰色字的功效是依成分類別推估。
         <Link href={`/analyze?inci=${encodeURIComponent(inci.list.join(", "))}`} className="ml-2 text-cinnabar underline">
-          逐項解析這張成分表
+          用成分表解析再看一次
         </Link>
       </p>
-    </details>
+    </section>
   );
 }
