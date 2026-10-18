@@ -50,7 +50,10 @@ export function productHaystack(product: Product) {
     product.nameZh,
     product.summary,
     product.texture,
-    ...product.keyActives.map((active) => ingredientName(active.ingredient)),
+    ...product.keyActives.flatMap((active) => {
+      const ingredient = getIngredient(active.ingredient);
+      return ingredient ? [ingredient.nameZh, ingredient.nameEn, ...ingredient.aliases] : [active.ingredient];
+    }),
   ]
     .join(" ")
     .toLowerCase();

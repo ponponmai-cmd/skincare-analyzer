@@ -21,6 +21,7 @@ const links = [
   ["/compare", "並排"],
   ["/sunscreen", "防曬"],
   ["/ages", "年紀"],
+  ["/masks", "面膜急救"],
   ["/method", "判讀法"],
 ];
 
@@ -65,7 +66,7 @@ export function SiteHeader() {
             </span>
           </span>
         </Link>
-        <nav className="hidden items-center gap-5 lg:flex">
+        <nav className="hidden items-center gap-4 lg:flex">
           <NavLinks />
         </nav>
         <Sheet>

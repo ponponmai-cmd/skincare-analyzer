@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { SaveCompareButton } from "@/components/compare-store";
+import { ProductImage } from "@/components/product-image";
+import { Stars } from "@/components/stars";
+import { TierBadges } from "@/components/tier-badges";
 import { formatTwd, formatUnitPrice, formatVolume } from "@/lib/format";
 import { productCategoryLabel } from "@/lib/labels";
 import type { Product } from "@/lib/types";
@@ -15,12 +18,23 @@ export function ProductCard({ product }: { product: Product }) {
         </p>
         <p className="text-xs text-muted-foreground">{product.brandZh}</p>
       </div>
-      <h3 className="mt-3 font-serif text-2xl leading-tight">
-        <Link href={`/products/${product.slug}`} className="hover:text-cinnabar">
-          {product.nameZh}
+      <div className="mt-3 flex gap-3">
+        <Link href={`/products/${product.slug}`} className="shrink-0" tabIndex={-1} aria-hidden>
+          <ProductImage product={product} className="w-20" />
         </Link>
-      </h3>
-      <p className="mt-1 text-sm text-muted-foreground">{product.name}</p>
+        <div className="min-w-0">
+          <h3 className="font-serif text-xl leading-tight">
+            <Link href={`/products/${product.slug}`} className="hover:text-cinnabar">
+              {product.nameZh}
+            </Link>
+          </h3>
+          <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">{product.name}</p>
+          <Stars slug={product.slug} showLabel={false} className="mt-1" />
+        </div>
+      </div>
+      <div className="mt-2 flex flex-wrap gap-1.5">
+        <TierBadges product={product} />
+      </div>
       <p className="mt-3 line-clamp-3 text-sm leading-6">{product.summary}</p>
       <div className="mt-auto pt-4">
         <p className="font-serif text-xl">{formatUnitPrice(product)}</p>

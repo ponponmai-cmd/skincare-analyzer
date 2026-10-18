@@ -3,6 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { DupeColumns } from "@/components/dupe-columns";
 import { DupePicker } from "@/components/dupe-picker";
+import { DupeTable } from "@/components/dupe-table";
 import {
   Dialog,
   DialogContent,
@@ -42,6 +43,8 @@ export function DupeScreen() {
       <p className="mt-6 text-sm text-muted-foreground">
         {product.brandZh} {product.nameZh} 現在是 {formatUnitPrice(product)}。
       </p>
+      <DupeTable product={product} />
+      <h2 className="mt-12 font-serif text-3xl">逐瓶說明：差在哪裡</h2>
       <div className="mt-6">
         <DupeColumns product={product} />
       </div>

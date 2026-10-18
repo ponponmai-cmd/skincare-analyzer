@@ -1,3 +1,4 @@
+import { DoseCard } from "@/components/dose-card";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -69,6 +70,8 @@ async function IngredientScreen({
       {item.aliases.length > 0 ? (
         <p className="mt-3 text-sm text-muted-foreground">也叫做 {item.aliases.join("、")}</p>
       ) : null}
+
+      <DoseCard slug={item.slug} className="mt-8" />
 
       <div className="mt-10 grid gap-8 lg:grid-cols-[1.3fr_0.7fr]">
         <div className="space-y-8">

@@ -18,7 +18,7 @@ const anchors = [
   "drwu-hyaluronic",
 ];
 
-const goalChips = ["美白淡斑", "痘痘粉刺", "保濕", "修護敏感", "抗老細紋", "泛紅", "控油毛孔", "防曬"];
+const goalChips = ["美白淡斑", "抗皺細紋", "緊實拉提", "痘痘粉刺", "保濕", "修護敏感", "泛紅", "控油毛孔", "防曬", "身體光滑", "身體緊緻"];
 
 export default function HomePage() {
   const featured = requireProduct("skinceuticals-ce-ferulic");
@@ -104,9 +104,24 @@ export default function HomePage() {
           {[
             ["成分表解析", "貼上整串成分，逐項翻譯，標出功效成分排在哪裡、1% 線之後的點綴、香料與互相衝突的組合。", "/analyze"],
             ["產品連結", "韓國、台灣、日本、歐美的瓶子放在一起，配方接近就用每毫升價格排。缺的成分會寫出來。", "/dupes"],
-            ["不當冤大頭", "每一瓶都有蝦皮、酷澎搜尋，把看到的價格填進去，立刻知道每毫升貴不貴、有沒有更便宜的近親。", "/products"],
+            ["不當冤大頭", "每一瓶都能先用 Google 看商品，再連去蝦皮、酷澎、momo，不用先登入。把看到的價格填進去，立刻知道每毫升貴不貴。", "/products"],
           ].map(([title, body, href]) => (
             <Link key={title} href={href} className="border border-border p-5 hover:border-cinnabar">
+              <h3 className="font-serif text-2xl">{title}</h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">{body}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 pb-14">
+        <div className="grid gap-4 md:grid-cols-3">
+          {[
+            ["知名熱銷", "momo 銷量破千、大廠牌、成分清楚的瓶子。", "/products?tier=bestseller"],
+            ["奢華款看成分", "買不起也可以先看：貴婦品牌裝了什麼、怎麼用、有沒有便宜的近親。", "/products?tier=luxury"],
+            ["身體乳", "想讓身體更光滑、更緊緻：尿素、水楊酸、果酸與 A 醇身體乳。", "/products?goal=body-smooth"],
+          ].map(([title, body, href]) => (
+            <Link key={title} href={href} className="border border-border bg-card p-5 hover:border-cinnabar">
               <h3 className="font-serif text-2xl">{title}</h3>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">{body}</p>
             </Link>

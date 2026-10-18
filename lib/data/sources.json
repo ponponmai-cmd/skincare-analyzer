@@ -3443,5 +3443,39 @@
    "url": "https://incidecoder-content.storage.googleapis.com/8f99cb54-0487-4d7f-a254-e6b616371436/products/kiehls-creme-de-corps/kiehls-creme-de-corps_front_photo_original.jpeg",
    "source": "INCIDecoder"
   }
+ },
+ "paulas-retinal-pro": {
+  "fetchedAt": "2026-10-18",
+  "momo": {
+   "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=13143233",
+   "name": "【PAULA’S CHOICE 寶拉珍選】高效A醛PRO新生精華30ml(抗老/抗皺/逆齡/撫紋)",
+   "price": 2082,
+   "sales": 15000,
+   "salesText": "總銷量>1.5萬",
+   "rating": "4.9",
+   "ratingTimes": "241",
+   "image": "https://img3.momoshop.com.tw/goodsimg/0013/143/233/13143233_OL.jpg?t=1756514573"
+  },
+  "image": {
+   "url": "https://img3.momoshop.com.tw/goodsimg/0013/143/233/13143233_OL.jpg?t=1756514573",
+   "source": "momo"
+  }
+ },
+ "avene-retinal-blemish": {
+  "fetchedAt": "2026-10-18",
+  "momo": {
+   "url": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=13976968",
+   "name": "【Avene 雅漾】官方直營 A醛速效淨痘精華40ml(淨痘有感)",
+   "price": 841,
+   "sales": 3000,
+   "salesText": "總銷量>3,000",
+   "rating": "4.9",
+   "ratingTimes": "78",
+   "image": "https://img2.momoshop.com.tw/goodsimg/0013/976/968/13976968_OL.jpg?t=1790761612"
+  },
+  "image": {
+   "url": "https://img2.momoshop.com.tw/goodsimg/0013/976/968/13976968_OL.jpg?t=1790761612",
+   "source": "momo"
+  }
  }
 }

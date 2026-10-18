@@ -2,6 +2,8 @@ export const ratingCriteria =
   "值得留下的星等，綜合三件事：主成分的人體證據與濃度、每毫升的價格是否合理、多數人用得住的程度。五顆星是「同類裡最值得先買」，一兩顆星不代表有害，而是同樣的錢有更好的選擇。";
 
 export const ratings: Record<string, 1 | 2 | 3 | 4 | 5> = {
+  "paulas-retinal-pro": 3,
+  "avene-retinal-blemish": 4,
   "skinceuticals-ce-ferulic": 4,
   "timeless-cef": 4,
   "paulas-c15": 3,

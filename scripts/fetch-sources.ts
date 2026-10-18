@@ -5,6 +5,7 @@ import type { Product } from "../lib/types";
 const UA =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0 Safari/537.36";
 const OUT = "lib/data/sources.json";
+const MEDIA = "lib/data/media.json";
 const OVERRIDES = "scripts/source-overrides.json";
 const today = new Date().toISOString().slice(0, 10);
 
@@ -158,8 +159,21 @@ async function readMomo(product: Product, override?: Override) {
     }
   }
   if (!best) return undefined;
-  const { score: _score, ...momo } = best;
-  return momo;
+  delete (best as { score?: number }).score;
+  return best as ProductSource["momo"];
+}
+
+function writeMedia(result: Sources) {
+  const media: Record<string, { image?: string; imageSource?: string; sales?: number; salesText?: string }> = {};
+  for (const [slug, entry] of Object.entries(result)) {
+    media[slug] = {
+      image: entry.image?.url,
+      imageSource: entry.image?.source,
+      sales: entry.momo?.sales || undefined,
+      salesText: entry.momo?.salesText || undefined,
+    };
+  }
+  writeFileSync(MEDIA, `${JSON.stringify(media)}\n`);
 }
 
 async function main() {
@@ -195,6 +209,8 @@ async function main() {
     );
     writeFileSync(OUT, `${JSON.stringify(result, null, 1)}\n`);
   }
+  writeMedia(result);
 }
 
-main();
+if (process.argv[2] === "--media-only") writeMedia(previous);
+else main();

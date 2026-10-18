@@ -108,6 +108,19 @@ const brandAliases: Record<string, string[]> = {
   Anua: ["anua"],
   Medicube: ["medicube"],
   "Dr.G": ["drg"],
+  "La Mer": ["海洋拉娜", "lamer"],
+  "Lancôme": ["蘭蔻", "lancome"],
+  Shiseido: ["資生堂"],
+  Sulwhasoo: ["雪花秀"],
+  "Clé de Peau Beauté": ["肌膚之鑰", "cpb"],
+  "SK-II": ["skii", "sk2"],
+  Eucerin: ["優色林"],
+  Neutrogena: ["露得清"],
+  Vaseline: ["凡士林"],
+  NIVEA: ["妮維雅"],
+  COSRX: ["cosrx"],
+  Skin1004: ["skin1004"],
+  Aestura: ["艾思諾娜", "aestura"],
 };
 
 const productAliases: Record<string, string[]> = {
@@ -127,6 +140,20 @@ const productAliases: Record<string, string[]> = {
   "anua-heartleaf-toner": ["魚腥草化妝水"],
   "cosrx-snail-96": ["蝸牛精華"],
   "curel-cream": ["珂潤乳霜"],
+  "lamer-creme": ["乳霜之王", "經典乳霜", "面霜之王"],
+  "lancome-genifique": ["小黑瓶"],
+  "shiseido-ultimune": ["紅腰子", "紅妍肌活"],
+  "sulwhasoo-first-care": ["潤燥精華"],
+  "cpb-la-creme": ["la creme", "鑽石乳霜"],
+  "kiehls-creme-de-corps": ["契爾氏身體乳"],
+  "neogence-retinol-18": ["霓淨思a醇"],
+  "neogence-peptide-10": ["霓淨思胜肽"],
+  "eucerin-urea-10": ["尿素身體乳"],
+  "neutrogena-norwegian-body": ["挪威配方"],
+  "vaseline-gluta-hya": ["凡士林亮白"],
+  "nivea-q10-body": ["q10身體乳"],
+  "cerave-sa-cream": ["水楊酸身體霜"],
+  "paulas-body-aha": ["果酸身體乳"],
 };
 
 const vagueQueries = new Set(["精華", "精華液", "乳液", "乳霜", "化妝水", "保養品", "保養"]);

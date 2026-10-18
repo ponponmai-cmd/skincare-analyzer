@@ -5,7 +5,14 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { SaveCompareButton } from "@/components/compare-store";
 import { EvidenceBadge, PregnancyBadge } from "@/components/marks";
+import { DoseCard } from "@/components/dose-card";
+import { ProductImage } from "@/components/product-image";
 import { ShopLinks } from "@/components/shop-links";
+import { Stars } from "@/components/stars";
+import { TierBadges } from "@/components/tier-badges";
+import { doseGuide } from "@/lib/doses";
+import { howToUseFor } from "@/lib/how-to-use";
+import { isBestSeller } from "@/lib/media";
 import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { productsContaining } from "@/lib/catalog";
@@ -16,7 +23,7 @@ import { productOrigin } from "@/lib/shopping";
 import type { Ingredient, Origin, Product } from "@/lib/types";
 import { cn } from "cn";
 
-const examples = ["美白", "痘痘", "保濕", "毛孔粗大", "菸鹼醯胺", "魚腥草", "青春露", "安耐曬"];
+const examples = ["美白", "抗皺", "緊實拉提", "痘痘", "保濕", "身體光滑", "身體緊緻", "A醛", "菸鹼醯胺", "小黑瓶", "安耐曬"];
 
 export function ProsSearchForm({
   defaultValue = "",
@@ -147,10 +154,14 @@ export function ProsResults() {
 
 function GoalResults({ result }: { result: LookupResult }) {
   const [origin, setOrigin] = useState<Origin | "all">("all");
+  const [tier, setTier] = useState<"all" | "bestseller" | "luxury">("all");
   const goal = result.goal;
   if (!goal) return null;
   const shown = result.products.filter(
-    (product) => origin === "all" || productOrigin(product) === origin,
+    (product) =>
+      (origin === "all" || productOrigin(product) === origin) &&
+      (tier === "all" ||
+        (tier === "bestseller" ? isBestSeller(product.slug) : product.tier === "luxury")),
   );
   const counts = Object.fromEntries(
     originOrder.map((item) => [
@@ -185,7 +196,10 @@ function GoalResults({ result }: { result: LookupResult }) {
               <p className="mt-1 text-xs text-muted-foreground">{ingredient.inci}</p>
               <p className="mt-2 text-sm leading-6">{ingredient.functions.join("、")}</p>
               <p className="mt-1 text-xs text-muted-foreground">
-                常見濃度：{ingredient.typicalRange} · 收錄產品 {productsContaining(ingredient.slug).length} 瓶
+                {doseGuide[ingredient.slug]
+                  ? `要看到效果：至少 ${doseGuide[ingredient.slug].minimum}，最好 ${doseGuide[ingredient.slug].sweetSpot}`
+                  : `常見濃度：${ingredient.typicalRange}`}
+                {" · "}收錄產品 {productsContaining(ingredient.slug).length} 瓶
               </p>
             </Link>
           ))}
@@ -208,10 +222,23 @@ function GoalResults({ result }: { result: LookupResult }) {
                 {originLabel[item]} {counts[item]}
               </FilterChip>
             ))}
+          <span className="mx-1 self-center text-border">|</span>
+          <FilterChip active={tier === "bestseller"} onClick={() => setTier(tier === "bestseller" ? "all" : "bestseller")}>
+            知名熱銷
+          </FilterChip>
+          <FilterChip active={tier === "luxury"} onClick={() => setTier(tier === "luxury" ? "all" : "luxury")}>
+            奢華款
+          </FilterChip>
         </div>
+        {shown.length === 0 ? (
+          <p className="mt-4 border border-dashed border-border p-4 text-sm">這個篩選下沒有產品，換一個條件看看。</p>
+        ) : null}
         <ul className="mt-4 divide-y divide-border border-y border-border">
           {shown.map((product) => (
-            <li key={product.slug} className="grid gap-3 py-4 md:grid-cols-[1fr_auto] md:items-center">
+            <li key={product.slug} className="grid gap-3 py-4 md:grid-cols-[auto_1fr_auto] md:items-center">
+              <Link href={`/products/${product.slug}`} tabIndex={-1} aria-hidden className="hidden md:block">
+                <ProductImage product={product} className="w-16" />
+              </Link>
               <div>
                 <p className="text-xs text-muted-foreground">
                   {originLabel[productOrigin(product)]} · {productCategoryLabel[product.category]} · {product.brandZh}
@@ -219,6 +246,10 @@ function GoalResults({ result }: { result: LookupResult }) {
                 <Link href={`/products/${product.slug}`} className="font-serif text-xl hover:text-cinnabar">
                   {product.nameZh}
                 </Link>
+                <div className="mt-1 flex flex-wrap items-center gap-2">
+                  <Stars slug={product.slug} showLabel={false} />
+                  <TierBadges product={product} />
+                </div>
                 <p className="mt-1 text-sm leading-6">
                   <span className="text-sage">＋</span> {product.strengths[0]}
                 </p>
@@ -290,19 +321,26 @@ function ProductVerdict({
 }) {
   return (
     <article className="border border-border bg-card p-5">
-      <p className="font-mono text-[11px] tracking-[0.16em] text-cinnabar uppercase">
-        {originLabel[productOrigin(product)]} · {product.brand}
-      </p>
-      <h3 className="mt-2 font-serif text-3xl">{product.nameZh}</h3>
-      <p className="mt-1 text-sm text-muted-foreground">
-        {product.brandZh} · {product.name}
-      </p>
+      <div className="flex gap-4">
+        <ProductImage product={product} className="w-24 shrink-0 md:w-32" />
+        <div className="min-w-0">
+          <p className="font-mono text-[11px] tracking-[0.16em] text-cinnabar uppercase">
+            {originLabel[productOrigin(product)]} · {product.brand}
+          </p>
+          <h3 className="mt-2 font-serif text-3xl">{product.nameZh}</h3>
+          <p className="mt-1 text-sm text-muted-foreground">
+            {product.brandZh} · {product.name}
+          </p>
+          <Stars slug={product.slug} className="mt-2" />
+        </div>
+      </div>
       <p className="mt-3 max-w-3xl text-sm leading-6">{product.summary}</p>
       <p className="mt-3 text-sm text-muted-foreground">
         {formatTwd(product.priceTwd)}／{formatVolume(product)} · {formatUnitPrice(product)}
         {product.spf ? ` · SPF ${product.spf}${product.pa ? ` ${product.pa}` : ""}` : ""}
       </p>
-      <div className="mt-3">
+      <div className="mt-3 flex flex-wrap gap-2">
+        <TierBadges product={product} />
         <PregnancyBadge pregnancy={product.pregnancy} />
       </div>
       {activeNotes.length > 0 ? (
@@ -327,6 +365,14 @@ function ProductVerdict({
         </section>
       </div>
       <p className="mt-6 max-w-3xl border-l-2 border-cinnabar pl-4 text-sm leading-7">{product.expertNote}</p>
+      <section className="mt-6">
+        <h4 className="font-serif text-2xl">怎麼用</h4>
+        <ol className="mt-3 list-decimal space-y-1 pl-5 text-sm leading-6">
+          {howToUseFor(product).map((step) => (
+            <li key={step}>{step}</li>
+          ))}
+        </ol>
+      </section>
       <div className="mt-5 flex flex-wrap gap-2">
         <SaveCompareButton slug={product.slug} />
         <Link
@@ -374,6 +420,7 @@ function IngredientVerdict({ ingredient }: { ingredient: Ingredient }) {
         ))}
       </div>
       <p className="mt-3 max-w-3xl text-sm leading-6">{ingredient.mechanism}</p>
+      <DoseCard slug={ingredient.slug} className="mt-4 max-w-3xl" compact />
       <dl className="mt-4 grid max-w-3xl gap-3 text-sm leading-6 md:grid-cols-2">
         <div>
           <dt className="text-muted-foreground">常見濃度</dt>

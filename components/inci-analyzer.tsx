@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import { EvidenceBadge } from "@/components/marks";
 import { Button } from "@/components/ui/button";
@@ -31,8 +32,9 @@ const samples = [
 const warnFlags: InciFlag[] = ["fragrance", "allergen", "essential-oil", "drying-alcohol", "cooling", "harsh-surfactant", "comedogenic"];
 
 export function InciAnalyzer() {
-  const [text, setText] = useState("");
-  const [submitted, setSubmitted] = useState("");
+  const initial = useSearchParams().get("inci") ?? "";
+  const [text, setText] = useState(initial);
+  const [submitted, setSubmitted] = useState(initial);
   const analysis = useMemo(() => (submitted.trim() ? analyze(submitted) : null), [submitted]);
 
   return (

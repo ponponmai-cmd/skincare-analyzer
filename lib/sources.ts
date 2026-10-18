@@ -26,18 +26,6 @@ export function fullInci(slug: string) {
   return sources[slug]?.inci?.list ?? [];
 }
 
-export function productImage(slug: string) {
-  return sources[slug]?.image;
-}
-
-export function momoSales(slug: string) {
-  return sources[slug]?.momo?.sales ?? 0;
-}
-
-export function isBestSeller(slug: string) {
-  return momoSales(slug) >= 1000;
-}
-
 export function sourcesFetchedAt() {
   const dates = Object.values(sources).map((item) => item.fetchedAt);
   return dates.sort().at(-1) ?? "";

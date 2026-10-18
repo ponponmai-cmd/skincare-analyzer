@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { InciAnalyzer } from "@/components/inci-analyzer";
 import { PageIntro } from "@/components/marks";
 
@@ -15,7 +16,9 @@ export default function AnalyzePage() {
         title="把整串成分表貼進來。"
         lede="從包裝、蝦皮或酷澎商品頁複製全成分，中英文都可以。膚鑑會逐項翻譯和標註，指出真正有功效的成分排在哪裡、可能只是點綴的有哪些、同一瓶裡會互相打架的組合，再找出收錄產品裡成分最接近、可能更便宜的瓶子。"
       />
-      <InciAnalyzer />
+      <Suspense fallback={<p className="mt-8 text-sm">載入解析工具…</p>}>
+        <InciAnalyzer />
+      </Suspense>
     </div>
   );
 }

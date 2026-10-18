@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { productImage } from "@/lib/sources";
+import { productImage } from "@/lib/media";
 import type { Product } from "@/lib/types";
 import { cn } from "cn";
 

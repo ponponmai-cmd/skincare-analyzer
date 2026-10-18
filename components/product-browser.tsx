@@ -1,10 +1,15 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/product-card";
 import { products } from "@/lib/products";
+import { goals } from "@/lib/goals";
+import { goalProducts } from "@/lib/lookup";
+import { isBestSeller, momoSales } from "@/lib/media";
+import { productRating } from "@/lib/ratings";
 import { productHaystack } from "@/lib/catalog";
 import {
   ageLabel,
@@ -19,17 +24,46 @@ import {
 import { productOrigin } from "@/lib/shopping";
 import type { AgeBand, Concern, Origin, ProductCategory } from "@/lib/types";
 
+type Tier = "all" | "bestseller" | "luxury" | "budget";
+type Sort = "unit" | "fit" | "rating" | "sales";
+
+const tierOptions: readonly (readonly [Tier, string])[] = [
+  ["all", "全部"],
+  ["bestseller", "知名熱銷（momo 銷量破千）"],
+  ["budget", "平價（NT$600 以下）"],
+  ["luxury", "奢華款"],
+];
+
+const sortOptions: readonly (readonly [Sort, string])[] = [
+  ["fit", "最對症"],
+  ["unit", "單價低"],
+  ["rating", "星等高"],
+  ["sales", "銷量高"],
+];
+
 export function ProductBrowser() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<ProductCategory | "all">("all");
   const [concern, setConcern] = useState<Concern | "all">("all");
   const [age, setAge] = useState<AgeBand | "all">("all");
   const [origin, setOrigin] = useState<Origin | "all">("all");
+  const params = useSearchParams();
+  const initialGoal = goals.some((item) => item.id === params.get("goal")) ? params.get("goal")! : "all";
+  const initialTier = tierOptions.find(([value]) => value === params.get("tier"))?.[0] ?? "all";
+  const [goal, setGoal] = useState<string>(initialGoal);
+  const [tier, setTier] = useState<Tier>(initialTier);
+  const [sort, setSort] = useState<Sort>(initialGoal === "all" ? "unit" : "fit");
 
   const results = useMemo(() => {
     const needle = query.trim().toLowerCase();
-    return products
+    const goalHit = goal === "all" ? null : goals.find((item) => item.id === goal);
+    const goalRank = goalHit ? new Map(goalProducts(goalHit).map((product, index) => [product.slug, index])) : null;
+    const filtered = products
       .filter((product) => {
+        if (goalRank && !goalRank.has(product.slug)) return false;
+        if (tier === "bestseller" && !isBestSeller(product.slug)) return false;
+        if (tier === "luxury" && product.tier !== "luxury") return false;
+        if (tier === "budget" && product.priceTwd > 600) return false;
         if (origin !== "all" && productOrigin(product) !== origin) return false;
         if (category !== "all" && product.category !== category) return false;
         if (concern !== "all" && !product.concerns.includes(concern)) return false;
@@ -37,8 +71,15 @@ export function ProductBrowser() {
         if (!needle) return true;
         return productHaystack(product).includes(needle);
       })
-      .sort((a, b) => a.priceTwd / a.volume - b.priceTwd / b.volume);
-  }, [query, category, concern, age, origin]);
+      ;
+    const unit = (product: (typeof products)[number]) => product.priceTwd / product.volume;
+    return filtered.sort((a, b) => {
+      if (sort === "fit" && goalRank) return (goalRank.get(a.slug) ?? 0) - (goalRank.get(b.slug) ?? 0);
+      if (sort === "rating") return productRating(b.slug) - productRating(a.slug) || unit(a) - unit(b);
+      if (sort === "sales") return momoSales(b.slug) - momoSales(a.slug) || unit(a) - unit(b);
+      return unit(a) - unit(b);
+    });
+  }, [query, category, concern, age, origin, goal, tier, sort]);
 
   return (
     <div>
@@ -51,6 +92,24 @@ export function ProductBrowser() {
           className="h-10 bg-card"
         />
       </label>
+      <ChipRow
+        label="想處理的問題"
+        value={goal}
+        onChange={(value) => {
+          setGoal(value);
+          if (value !== "all") {
+            setConcern("all");
+            setSort("fit");
+          } else if (sort === "fit") setSort("unit");
+        }}
+        options={[["all", "全部"], ...goals.map((item) => [item.id, item.short] as const)]}
+      />
+      <ChipRow
+        label="知名度與價位"
+        value={tier}
+        onChange={setTier}
+        options={tierOptions}
+      />
       <ChipRow
         label="產地"
         value={origin}
@@ -69,7 +128,7 @@ export function ProductBrowser() {
         ]}
       />
       <ChipRow
-        label="想處理的事"
+        label="標示功效"
         value={concern}
         onChange={setConcern}
         options={[
@@ -84,9 +143,23 @@ export function ProductBrowser() {
         options={[["all", "全部"], ...ageOrder.map((item) => [item, ageLabel[item]] as const)]}
       />
       <div className="mt-3 flex items-center justify-between gap-3">
-        <p className="text-sm text-muted-foreground">
-          {results.length} 項，依每毫升或每克價格由低到高
-        </p>
+        <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+          <span>{results.length} 項 · 排序</span>
+          {sortOptions
+            .filter(([value]) => value !== "fit" || goal !== "all")
+            .map(([value, text]) => (
+              <Button
+                key={value}
+                type="button"
+                size="sm"
+                variant={sort === value ? "secondary" : "ghost"}
+                className="h-7 px-2"
+                onClick={() => setSort(value)}
+              >
+                {text}
+              </Button>
+            ))}
+        </div>
         <Button
           type="button"
           variant="outline"
@@ -97,6 +170,9 @@ export function ProductBrowser() {
             setConcern("all");
             setAge("all");
             setOrigin("all");
+            setGoal("all");
+            setTier("all");
+            setSort("unit");
           }}
         >
           清除

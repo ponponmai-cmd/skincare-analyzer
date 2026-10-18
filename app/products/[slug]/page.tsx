@@ -3,6 +3,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { DupeColumns } from "@/components/dupe-columns";
+import { DupeTable } from "@/components/dupe-table";
+import { ProductImage } from "@/components/product-image";
+import { Stars } from "@/components/stars";
+import { TierBadges } from "@/components/tier-badges";
+import { howToUseFor } from "@/lib/how-to-use";
+import { ratingCriteria } from "@/lib/ratings";
+import { productSource } from "@/lib/sources";
 import { PriceCheck } from "@/components/price-check";
 import { productOrigin } from "@/lib/shopping";
 import { SaveCompareButton } from "@/components/compare-store";
@@ -58,23 +65,32 @@ async function ProductScreen({ params }: { params: Promise<{ slug: string }> }) 
 
   return (
     <div className="mx-auto max-w-6xl px-5 py-12">
-      <p className="font-mono text-[11px] tracking-[0.16em] text-cinnabar uppercase">
-        {originLabel[productOrigin(product)]} · {productCategoryLabel[product.category]} · {product.brand}
-      </p>
-      <h1 className="mt-3 max-w-3xl font-serif text-4xl leading-tight md:text-5xl">
-        {product.nameZh}
-      </h1>
-      <p className="mt-3 text-muted-foreground">
-        {product.brandZh} · {product.name}
-      </p>
-      <p className="mt-4 max-w-3xl text-base leading-7">{product.summary}</p>
-      <div className="mt-4 flex flex-wrap gap-2">
-        <PregnancyBadge pregnancy={product.pregnancy} />
-        {product.concerns.map((concern) => (
-          <span key={concern} className="border border-border px-2 py-0.5 text-xs">
-            {concernLabel[concern]}
-          </span>
-        ))}
+      <div className="grid gap-6 md:grid-cols-[220px_1fr] md:items-start">
+        <ProductImage product={product} className="w-40 md:w-full" />
+        <div>
+          <p className="font-mono text-[11px] tracking-[0.16em] text-cinnabar uppercase">
+            {originLabel[productOrigin(product)]} · {productCategoryLabel[product.category]} · {product.brand}
+          </p>
+          <h1 className="mt-3 max-w-3xl font-serif text-4xl leading-tight md:text-5xl">
+            {product.nameZh}
+          </h1>
+          <p className="mt-3 text-muted-foreground">
+            {product.brandZh} · {product.name}
+          </p>
+          <div className="mt-3" title={ratingCriteria}>
+            <Stars slug={product.slug} className="text-base" />
+          </div>
+          <p className="mt-4 max-w-3xl text-base leading-7">{product.summary}</p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <TierBadges product={product} />
+            <PregnancyBadge pregnancy={product.pregnancy} />
+            {product.concerns.map((concern) => (
+              <span key={concern} className="border border-border px-2 py-0.5 text-xs">
+                {concernLabel[concern]}
+              </span>
+            ))}
+          </div>
+        </div>
       </div>
 
       <div className="mt-8 grid gap-4 border border-border bg-card p-5 md:grid-cols-3">
@@ -135,6 +151,22 @@ async function ProductScreen({ params }: { params: Promise<{ slug: string }> }) 
         </section>
       </div>
 
+      <section className="mt-8 border border-border bg-card p-5">
+        <h2 className="font-serif text-2xl">怎麼用</h2>
+        <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm leading-6">
+          {howToUseFor(product).map((step) => (
+            <li key={step}>{step}</li>
+          ))}
+        </ol>
+        {product.officialUrl ? (
+          <p className="mt-3 text-sm">
+            <a href={product.officialUrl} target="_blank" rel="noopener noreferrer" className="text-cinnabar underline">
+              品牌官網產品頁
+            </a>
+          </p>
+        ) : null}
+      </section>
+
       <section className="mt-8">
         <h2 className="font-serif text-2xl">拿來對照的主成份</h2>
         <ul className="mt-3 divide-y divide-border border-y border-border">
@@ -149,6 +181,8 @@ async function ProductScreen({ params }: { params: Promise<{ slug: string }> }) 
         </ul>
         <p className="mt-3 text-sm leading-6 text-muted-foreground">{product.formulaNote}</p>
       </section>
+
+      <FullInci slug={product.slug} />
 
       {product.spf ? (
         <section className="mt-8 grid gap-3 border border-border p-5 text-sm leading-6 md:grid-cols-4">
@@ -167,6 +201,8 @@ async function ProductScreen({ params }: { params: Promise<{ slug: string }> }) 
         {product.ages.map((age) => ageLabel[age]).join("、")}。
       </p>
 
+      <DupeTable product={product} />
+
       <section className="mt-12">
         <h2 className="font-serif text-3xl">和其他瓶子的關係</h2>
         <p className="mt-2 max-w-3xl text-sm leading-6 text-muted-foreground">
@@ -177,5 +213,36 @@ async function ProductScreen({ params }: { params: Promise<{ slug: string }> }) 
         </div>
       </section>
     </div>
+  );
+}
+
+function FullInci({ slug }: { slug: string }) {
+  const inci = productSource(slug)?.inci;
+  if (!inci) {
+    return (
+      <p className="mt-6 text-sm leading-6 text-muted-foreground">
+        這瓶的完整成分表還沒取得，請以包裝或官網為準。可以把包裝上的成分表貼到{" "}
+        <Link href="/analyze" className="text-cinnabar underline">
+          成分表解析
+        </Link>
+        。
+      </p>
+    );
+  }
+  return (
+    <details className="mt-6 border border-border p-4">
+      <summary className="cursor-pointer font-serif text-xl">完整成分表（{inci.list.length} 項）</summary>
+      <p className="mt-3 text-sm leading-7">{inci.list.join("、")}</p>
+      <p className="mt-3 text-xs text-muted-foreground">
+        來源：
+        <a href={inci.url} target="_blank" rel="noopener noreferrer" className="underline">
+          INCIDecoder · {inci.title}
+        </a>
+        。海外版與台灣版偶有差異，以包裝為準。
+        <Link href={`/analyze?inci=${encodeURIComponent(inci.list.join(", "))}`} className="ml-2 text-cinnabar underline">
+          逐項解析這張成分表
+        </Link>
+      </p>
+    </details>
   );
 }
