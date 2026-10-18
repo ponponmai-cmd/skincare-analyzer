@@ -589,7 +589,6 @@ export const moreProducts: Product[] = [
     ],
     roles: [{ id: "hydration", weight: 5 }],
     formulaNote: formula,
-    tier: "luxury",
     howToUse: "洗澡後擦全身，乾燥處多擦。",
   },
 ];
