@@ -143,7 +143,7 @@ const coreProducts: Product[] = [
     volumeUnit: "ml",
     texture: "精華液，管狀包裝",
     fragrance: true,
-    dryingAlcohol: false,
+    dryingAlcohol: true,
     pregnancy: "compatible",
     summary: "日本藥妝裡很常見的原型維生素 C。重點是避光包裝，不是論文比例。",
     strengths: [
