@@ -28,6 +28,10 @@ import {
   skinLabel,
   whiteCastLabel,
 } from "@/lib/labels";
+import { ClaimList, EfficacyMeter, RefList } from "@/components/evidence-blocks";
+import { brandGroup, brandGroupLabel, defaultProductStudy, productEfficacy } from "@/lib/evidence";
+import { ingredientRefs } from "@/lib/references";
+import type { Product } from "@/lib/types";
 import { cn } from "cn";
 
 export function generateStaticParams() {
@@ -79,8 +83,15 @@ async function ProductScreen({ params }: { params: Promise<{ slug: string }> }) 
           <p className="mt-3 text-muted-foreground">
             {product.brandZh} · {product.name}
           </p>
-          <div className="mt-3" title={ratingCriteria}>
-            <Stars slug={product.slug} className="text-base" />
+          <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">
+            <span className="inline-flex items-center gap-2 text-sm" title={ratingCriteria}>
+              <span className="text-xs text-muted-foreground">值得留下</span>
+              <Stars slug={product.slug} className="text-base" />
+            </span>
+            <span className="inline-flex items-center gap-2 text-sm">
+              <span className="text-xs text-muted-foreground">實際效果</span>
+              <EfficacyMeter value={productEfficacy(product)} />
+            </span>
           </div>
           <p className="mt-4 max-w-3xl text-base leading-7">{product.summary}</p>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -129,6 +140,8 @@ async function ProductScreen({ params }: { params: Promise<{ slug: string }> }) 
       <blockquote className="mt-8 max-w-3xl border-l-2 border-cinnabar pl-4 text-sm leading-7">
         {product.expertNote}
       </blockquote>
+
+      <EvidenceSection product={product} />
 
       <div id="price" className="mt-8 scroll-mt-24">
         <PriceCheck product={product} />
@@ -262,6 +275,49 @@ function FullInci({ slug, actives }: { slug: string; actives: string[] }) {
           用成分表解析再看一次
         </Link>
       </p>
+    </section>
+  );
+}
+
+function EvidenceSection({ product }: { product: Product }) {
+  const refIds = [
+    ...(product.claims ?? []).flatMap((claim) => claim.refs ?? []),
+    ...product.keyActives
+      .filter((active) => active.centrality >= 3)
+      .flatMap((active) => ingredientRefs[active.ingredient]?.slice(0, 2) ?? []),
+  ];
+  return (
+    <section id="evidence" className="mt-10 scroll-mt-24">
+      <h2 className="font-serif text-3xl">實際效果與宣稱查核</h2>
+      <p className="mt-2 max-w-3xl text-sm leading-6 text-muted-foreground">
+        把品牌說的話拆開，一句一句對照皮膚科與醫學期刊的研究。{brandGroupLabel[brandGroup(product)]}。
+        <Link href="/claims" className="ml-1 text-cinnabar underline">
+          看所有品牌的查核
+        </Link>
+      </p>
+      <div className="mt-4 grid gap-4 md:grid-cols-2">
+        <div className="border border-border bg-card p-4">
+          <p className="text-xs text-muted-foreground">這瓶本身有沒有醫學期刊的人體試驗</p>
+          <p className="mt-1 text-sm leading-6">{product.productStudy ?? defaultProductStudy}</p>
+        </div>
+        {product.asiaFit ? (
+          <div className="border border-border bg-card p-4">
+            <p className="text-xs text-muted-foreground">台灣與亞洲膚質</p>
+            <p className="mt-1 text-sm leading-6">{product.asiaFit}</p>
+          </div>
+        ) : null}
+      </div>
+      {product.claims?.length ? (
+        <div className="mt-5">
+          <ClaimList claims={product.claims} />
+        </div>
+      ) : null}
+      {refIds.length ? (
+        <details className="mt-5 border border-border p-4">
+          <summary className="cursor-pointer text-sm font-medium">佐證文獻（{new Set(refIds).size} 篇，點開看摘要與 PubMed 連結）</summary>
+          <RefList ids={refIds} className="mt-4" />
+        </details>
+      ) : null}
     </section>
   );
 }

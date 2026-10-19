@@ -1,4 +1,6 @@
 import { DoseCard } from "@/components/dose-card";
+import { RefList } from "@/components/evidence-blocks";
+import { ingredientRefs } from "@/lib/references";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -119,6 +121,16 @@ async function IngredientScreen({
           </p>
         </aside>
       </div>
+
+      {ingredientRefs[item.slug]?.length ? (
+        <section className="mt-10 border border-border bg-card p-5">
+          <h2 className="font-serif text-2xl">醫學期刊怎麼說</h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            每篇都附 PubMed 連結。橘字標示由廠商或原料商執行、資助的研究，可信度要打折看。
+          </p>
+          <RefList ids={ingredientRefs[item.slug]} className="mt-4" />
+        </section>
+      ) : null}
 
       <section className="mt-10 grid gap-6 md:grid-cols-2">
         <div>

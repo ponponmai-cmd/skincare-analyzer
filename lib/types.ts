@@ -93,6 +93,15 @@ export interface RoleWeight {
   weight: number;
 }
 
+export type ClaimVerdict = "supported" | "partial" | "weak" | "unsupported";
+
+export interface ClaimCheck {
+  claim: string;
+  verdict: ClaimVerdict;
+  why: string;
+  refs?: string[];
+}
+
 export interface Product {
   slug: string;
   brand: string;
@@ -118,6 +127,10 @@ export interface Product {
   roles: RoleWeight[];
   formulaNote: string;
   tier?: "luxury";
+  efficacy?: 1 | 2 | 3 | 4 | 5;
+  claims?: ClaimCheck[];
+  productStudy?: string;
+  asiaFit?: string;
   howToUse?: string;
   officialUrl?: string;
   spf?: number;
