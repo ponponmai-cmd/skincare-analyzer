@@ -1,5 +1,13 @@
+import { aging1Products } from "./products-aging1";
+import { prestigeProducts } from "./products-prestige";
+import { brightProducts } from "./products-bright";
+import { barrierProducts } from "./products-barrier";
+import { rednessProducts } from "./products-redness";
+import { acneProducts } from "./products-acne";
+import { sunbodyProducts } from "./products-sunbody";
 import { extraProducts } from "./products-extra";
 import { moreProducts } from "./products-more";
+import { productEvidence } from "./product-evidence";
 import type { Product } from "./types";
 
 const formula =
@@ -1232,6 +1240,19 @@ const coreProducts: Product[] = [
 
 const luxurySlugs = new Set(["skii-fte", "estee-anr"]);
 
-export const products: Product[] = [...coreProducts, ...extraProducts, ...moreProducts].map((product) =>
-  luxurySlugs.has(product.slug) ? { ...product, tier: "luxury" as const } : product,
-);
+export const products: Product[] = [
+  ...coreProducts,
+  ...extraProducts,
+  ...moreProducts,
+  ...aging1Products,
+  ...prestigeProducts,
+  ...brightProducts,
+  ...barrierProducts,
+  ...rednessProducts,
+  ...acneProducts,
+  ...sunbodyProducts,
+].map((product) => ({
+  ...product,
+  ...productEvidence[product.slug],
+  ...(luxurySlugs.has(product.slug) ? { tier: "luxury" as const } : {}),
+}));

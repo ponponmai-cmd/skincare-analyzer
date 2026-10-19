@@ -1,3 +1,11 @@
+import { aging1Ratings } from "./products-aging1";
+import { prestigeRatings } from "./products-prestige";
+import { brightRatings } from "./products-bright";
+import { barrierRatings } from "./products-barrier";
+import { rednessRatings } from "./products-redness";
+import { acneRatings } from "./products-acne";
+import { sunbodyRatings } from "./products-sunbody";
+
 export const ratingCriteria =
   "值得留下的星等，綜合三件事：主成分的人體證據與濃度、每毫升的價格是否合理、多數人用得住的程度。五顆星是「同類裡最值得先買」，一兩顆星不代表有害，而是同樣的錢有更好的選擇。";
 
@@ -82,6 +90,17 @@ export const ratings: Record<string, 1 | 2 | 3 | 4 | 5> = {
   "kiehls-creme-de-corps": 2,
 };
 
+const allRatings: Record<string, 1 | 2 | 3 | 4 | 5> = {
+  ...ratings,
+  ...aging1Ratings,
+  ...prestigeRatings,
+  ...brightRatings,
+  ...barrierRatings,
+  ...rednessRatings,
+  ...acneRatings,
+  ...sunbodyRatings,
+};
+
 export function productRating(slug: string) {
-  return ratings[slug] ?? 3;
+  return allRatings[slug] ?? 3;
 }

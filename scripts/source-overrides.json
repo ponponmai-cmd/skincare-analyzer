@@ -104,5 +104,443 @@
       "C25",
       "5ml"
     ]
+  },
+  "olay-micro-sculpting": {
+    "incidecoder": "olay-regenerist-micro-sculpting-cream"
+  },
+  "olay-retinol24": {
+    "incidecoder": "olay-regenerist-retinol-24-max"
+  },
+  "lancome-renergie-hpn": {
+    "incidecoder": "lancome-renergie-h-p-n-300-peptide-cream"
+  },
+  "estee-revitalizing-supreme": {
+    "incidecoder": "estee-lauder-revitalizing-supreme-youth-power-creme"
+  },
+  "clinique-smart-repair": {
+    "incidecoder": "clinique-smart-clinical-repair-tm-wrinkle-correcting-serum"
+  },
+  "kiehls-micro-dose-retinol": {
+    "incidecoder": "kiehls-micro-dose-retinol"
+  },
+  "shiseido-benefiance": {
+    "incidecoder": "shiseido-benefiance-wrinkle-smoothing-cream"
+  },
+  "arden-retinol-capsules": {
+    "incidecoder": "elizabeth-arden-retinol-ceramide-capsules"
+  },
+  "arden-ceramide-capsules": {
+    "incidecoder": "elizabeth-arden-advanced-ceramide-capsules-daily-youth-restoring-serum"
+  },
+  "sulwhasoo-ginseng-cream": {
+    "incidecoder": "sulwhasoo-concentrated-ginseng-renewing-cream-ex"
+  },
+  "shiseido-vital-perfection": {
+    "incidecoder": "shiseido-vital-perfection-uplifting-and-firming-advanced-cream"
+  },
+  "murad-retinol-youth": {
+    "incidecoder": "murad-retinol-youth-renewal-serum"
+  },
+  "drunk-elephant-a-passioni": {
+    "incidecoder": "drunk-elephant-a-passioni-retinol-cream"
+  },
+  "medik8-crystal-retinal-6": {
+    "incidecoder": "medik8-crystal-retinal-6-3"
+  },
+  "vichy-liftactiv-retinol": {
+    "incidecoder": "vichy-liftactiv-0-2-retinol-specialist-deep-wrinkles-serum"
+  },
+  "obagi-c-20": {
+    "incidecoder": "obagi-professional-c-tm-serum-20"
+  },
+  "skinceuticals-resveratrol": {
+    "incidecoder": "skinceuticals-resveratrol-b-e"
+  },
+  "skinceuticals-age-interrupter": {
+    "incidecoder": "skinceuticals-a-g-e-interrupter-advanced",
+    "momoSkip": true
+  },
+  "skinceuticals-retinol-03": {
+    "incidecoder": "skinceuticals-retinol-0-3"
+  },
+  "ordinary-buffet": {
+    "incidecoder": "the-ordinary-multi-peptide-ha-serum"
+  },
+  "ordinary-retinal-02": {
+    "incidecoder": "the-ordinary-retinal-0-2-emulsion"
+  },
+  "ordinary-argireline": {
+    "incidecoder": "the-ordinary-argireline-solution-10"
+  },
+  "ordinary-matrixyl": {
+    "incidecoder": "the-ordinary-matrixyl-10-ha"
+  },
+  "cosrx-snail-92-cream": {
+    "incidecoder": "cosrx-advanced-snail-92-all-in-one-cream"
+  },
+  "innisfree-retinol-cica": {
+    "incidecoder": "innisfree-retinol-cica-repair-ampoule"
+  },
+  "boj-dynasty-cream": {
+    "incidecoder": "beauty-of-joseon-dynasty-cream"
+  },
+  "skii-skinpower-cream": {
+    "incidecoder": "sk-ii-skinpower-cream"
+  },
+  "dior-capture-totale": {
+    "incidecoder": "dior-capture-totale-le-serum"
+  },
+  "estee-perfectionist-pro": {
+    "incidecoder": "estee-lauder-perfectionist-pro-rapid-firm-lift-treatment-with-acetyl-hexapeptide-8"
+  },
+  "kiehls-line-reducing": {
+    "incidecoder": "kiehls-powerful-strength-line-reducing-concentrate-2"
+  },
+  "neutrogena-rapid-wrinkle": {
+    "incidecoder": "neutrogena-rapid-wrinkle-repair-2"
+  },
+  "avene-hyaluron-b3": {
+    "incidecoder": "avene-hyaluron-activ-b3-concentrated-plumping-serum"
+  },
+  "is-clinical-super-serum": {
+    "incidecoder": "is-clinical-super-serum-advance"
+  },
+  "lancome-absolue-soft": {
+    "incidecoder": "lancome-absolue-longevity-the-soft-cream"
+  },
+  "chanel-sublimage": {
+    "incidecoder": "chanel-sublimage-la-creme"
+  },
+  "dior-prestige": {
+    "incidecoder": "dior-prestige-la-creme-texture-fine"
+  },
+  "hr-replasty-night": {
+    "incidecoder": "helena-rubinstein-re-plasty-age-recovery-night-cream"
+  },
+  "guerlain-orchidee": {
+    "incidecoder": "guerlain-orchidee-imperiale-the-cream"
+  },
+  "loreal-revitalift-ha": {
+    "incidecoder": "loreal-paris-revitalift-filler-1-5-pure-hyaluronic-acid-serum"
+  },
+  "loreal-revitalift-retinol": {
+    "incidecoder": "loreal-paris-revitalift-laser-pure-retinol-deep-anti-wrinkle-night-serum"
+  },
+  "olay-luminous-niacinamide": {
+    "incidecoder": "olay-luminous-niacinamide-super-serum"
+  },
+  "shiseido-white-lucent": {
+    "incidecoder": "shiseido-white-lucent-illuminating-micro-spot-serum"
+  },
+  "skii-genoptics-aura": {
+    "incidecoder": "sk-ii-genoptics-aura-essence"
+  },
+  "hada-labo-shirojyun": {
+    "incidecoder": "rohto-mentholatum-hada-labo-shirojyun-premium-whitening-essence"
+  },
+  "melano-cc-premium": {
+    "incidecoder": "rohto-mentholatum-melano-cc-premium-brightening-essence-2"
+  },
+  "ordinary-alpha-arbutin": {
+    "incidecoder": "the-ordinary-alpha-arbutin-2-ha"
+  },
+  "good-molecules-discoloration": {
+    "incidecoder": "good-molecules-discoloration-correcting-serum"
+  },
+  "cosrx-vitamin-c-23": {
+    "incidecoder": "cosrx-the-rx-the-vitamin-c-23"
+  },
+  "kiehls-clearly-corrective": {
+    "incidecoder": "kiehls-kiehls-clearly-corrective-dark-spot-solution"
+  },
+  "eucerin-anti-pigment": {
+    "incidecoder": "eucerin-anti-pigment-dual-serum"
+  },
+  "lrp-mela-b3": {
+    "incidecoder": "la-roche-posay-mela-b3-serum"
+  },
+  "boj-light-on": {
+    "incidecoder": "beauty-of-joseon-light-on-serum-centella-vita-c"
+  },
+  "ordinary-ascorbyl-glucoside": {
+    "incidecoder": "the-ordinary-ascorbyl-glucoside-solution-12"
+  },
+  "kose-sekkisei": {
+    "incidecoder": "kose-sekkisei-lotion-2"
+  },
+  "lancome-clarifique": {
+    "incidecoder": "lancome-clarifique-dual-essence"
+  },
+  "good-molecules-niacinamide-toner": {
+    "incidecoder": "good-molecules-niacinamide-brightening-toner"
+  },
+  "axis-y-dark-spot": {
+    "incidecoder": "axis-y-dark-spot-correcting-glow-serum"
+  },
+  "skin1004-tone-brightening": {
+    "incidecoder": "skin1004-madagascar-centella-tone-brightening-capsule-ampoule"
+  },
+  "numbuzin-no5": {
+    "incidecoder": "numbuzin-no-5-vitamin-concentrated-serum"
+  },
+  "medicube-deep-vita-c": {
+    "incidecoder": "medicube-deep-vita-c-ampoule"
+  },
+  "paulas-c25": {
+    "incidecoder": "paulas-choice-c25-super-booster"
+  },
+  "inkey-txa-night": {
+    "incidecoder": "the-inkey-list-the-tranexamic-acid-night-treatment"
+  },
+  "lrp-vitamin-c10": {
+    "incidecoder": "la-roche-posay-pure-vitamin-c10",
+    "momoSkip": true
+  },
+  "vichy-liftactiv-c15": {
+    "incidecoder": "vichy-liftactiv-supreme-15-pure-vitamin-c-brightening-serum"
+  },
+  "garnier-vitamin-c": {
+    "incidecoder": "garnier-bright-complete-vitamin-c-ampoule-serum"
+  },
+  "loreal-glycolic-bright": {
+    "incidecoder": "loreal-glycolic-bright-8-melasyl-glycolic-niacinamide-serum"
+  },
+  "drjart-ceramidin": {
+    "incidecoder": "dr-jart-ceramidin-cream-3"
+  },
+  "avene-cicalfate": {
+    "incidecoder": "avene-cicalfate-repaire-cream"
+  },
+  "minon-amino-milk": {
+    "incidecoder": "minon-amino-moist-moist-charge-milk"
+  },
+  "fab-ultra-repair": {
+    "incidecoder": "first-aid-beauty-ultra-repair-cream"
+  },
+  "physiogel-dmt": {
+    "incidecoder": "physiogel-daily-moisture-therapy-cream"
+  },
+  "cetaphil-cream": {
+    "incidecoder": "cetaphil-moisturising-cream-4"
+  },
+  "clinique-moisture-surge": {
+    "incidecoder": "clinique-moisture-surge-tm-100h-auto-replenishing-hydrator"
+  },
+  "clinique-ddmg": {
+    "incidecoder": "clinique-dramatically-different-moisturizing-gel"
+  },
+  "belif-aqua-bomb": {
+    "incidecoder": "belif-aqua-bomb"
+  },
+  "laneige-water-bank": {
+    "incidecoder": "laneige-water-bank-blue-hyaluronic-cream-combination-oily"
+  },
+  "round-lab-dokdo-toner": {
+    "incidecoder": "round-lab-1025-dokdo-toner-2"
+  },
+  "isntree-ha-toner": {
+    "incidecoder": "isntree-hyaluronic-acid-toner"
+  },
+  "klairs-supple-toner": {
+    "incidecoder": "klairs-supple-preparation-toner-unscented"
+  },
+  "purito-centella-serum": {
+    "incidecoder": "purito-wonder-releaf-centella-serum-unscented"
+  },
+  "vichy-mineral-89": {
+    "incidecoder": "vichy-mineral-89"
+  },
+  "ordinary-nmf": {
+    "incidecoder": "the-ordinary-natural-moisturizing-factors-ha"
+  },
+  "ordinary-ha-b5": {
+    "incidecoder": "the-ordinary-hyaluronic-acid-2-b5-hydrating-serum-2024-reformulation"
+  },
+  "neutrogena-hydro-boost": {
+    "incidecoder": "neutrogena-hydro-boost-water-gel"
+  },
+  "embryolisse": {
+    "incidecoder": "embryolisse-lait-creme-concentre"
+  },
+  "kiehls-ufc-gel": {
+    "incidecoder": "kiehls-ultra-facial-oil-free-gel-cream"
+  },
+  "lrp-hyalu-b5": {
+    "incidecoder": "la-roche-posay-hyalu-b5-serum"
+  },
+  "skinceuticals-ha-intensifier": {
+    "incidecoder": "skinceuticals-h-a-intensifier"
+  },
+  "drg-red-blemish": {
+    "incidecoder": "dr-g-red-blemish-clear-soothing-cream"
+  },
+  "klairs-midnight-blue": {
+    "incidecoder": "klairs-midnight-blue-calming-cream-2"
+  },
+  "lrp-dermallergo-fluid": {
+    "incidecoder": "la-roche-posay-toleriane-dermallergo-fluide"
+  },
+  "lrp-rosaliac-ar": {
+    "incidecoder": "la-roche-posay-rosaliac-ar-intense-serum"
+  },
+  "bioderma-sensibio-ar": {
+    "incidecoder": "bioderma-sensibio-ar-cream"
+  },
+  "kiehls-calendula-toner": {
+    "incidecoder": "kiehls-calendula-herbal-extract-toner-2021"
+  },
+  "avene-tolerance-control": {
+    "incidecoder": "avene-tolerance-control-soothing-skin-recovery-cream"
+  },
+  "aveeno-calm-restore": {
+    "incidecoder": "aveeno-calm-restore-gel-moisturizer"
+  },
+  "skin1004-centella-toner": {
+    "incidecoder": "skin1004-madagascar-centella-toning-toner"
+  },
+  "avene-thermal-water": {
+    "incidecoder": "avene-thermal-spring-water"
+  },
+  "skinceuticals-phyto": {
+    "incidecoder": "skinceuticals-phyto-corrective-gel"
+  },
+  "drjart-cicapair-cream": {
+    "incidecoder": "dr-jart-cicapair-tiger-grass-cream"
+  },
+  "cosrx-propolis-toner": {
+    "incidecoder": "cosrx-propolis-synergy-toner"
+  },
+  "laneige-cream-skin": {
+    "incidecoder": "laneige-cream-skin-refiner"
+  },
+  "innisfree-green-tea": {
+    "incidecoder": "innisfree-green-tea-seed-hyaluronic-serum"
+  },
+  "lrp-effaclar-duo": {
+    "incidecoder": "la-roche-posay-effaclar-duo",
+    "momoSkip": true
+  },
+  "avene-comedomed": {
+    "incidecoder": "avene-cleanance-comedomed-2"
+  },
+  "cerave-acne-gel": {
+    "incidecoder": "cerave-acne-control-gel"
+  },
+  "somebymi-miracle-toner": {
+    "incidecoder": "some-by-mi-aha-bha-pha-30-days-miracle-toner"
+  },
+  "cosrx-aha-bha-toner": {
+    "incidecoder": "cosrx-aha-bha-clarifying-treatment-toner"
+  },
+  "medicube-zero-pore": {
+    "incidecoder": "medicube-zero-pore-pads-2-0-2"
+  },
+  "bioderma-sebium-global": {
+    "incidecoder": "bioderma-sebium-global"
+  },
+  "lrp-effaclar-mat": {
+    "incidecoder": "la-roche-posay-effaclar-mat-2"
+  },
+  "paulas-8-aha": {
+    "incidecoder": "paulas-choice-skin-perfecting-8-aha-gel-exfoliant"
+  },
+  "lrp-effaclar-serum": {
+    "incidecoder": "la-roche-posay-effaclar-serum-ultra-concentre"
+  },
+  "isntree-bha-toner": {
+    "incidecoder": "isntree-clear-skin-bha-toner"
+  },
+  "bioderma-sebium-serum": {
+    "incidecoder": "bioderma-sebium-serum"
+  },
+  "inkey-succinic": {
+    "incidecoder": "the-inkey-list-succinic-acid-acne-treatment"
+  },
+  "cosrx-ac-calming": {
+    "incidecoder": "cosrx-ac-collection-calming-liquid-mild"
+  },
+  "isdin-fusion-water": {
+    "incidecoder": "isdin-fusion-water-magic-spf-50-2"
+  },
+  "eucerin-oil-control-sun": {
+    "incidecoder": "eucerin-sun-face-oil-control-dry-touch-spf-50"
+  },
+  "skin-aqua-tone-up": {
+    "incidecoder": "skinaqua-tone-up-uv-essence-spf50-pa"
+  },
+  "allie-chrono-gel": {
+    "incidecoder": "allie-chrono-beauty-gel-uv-ex-spf50-pa"
+  },
+  "anessa-brightening-gel": {
+    "incidecoder": "anessa-brightening-uv-sunscreen-gel-n-spf50-pa",
+    "momoSkip": true
+  },
+  "cell-fusion-laser-sun": {
+    "incidecoder": "cell-fusion-c-laser-sunscreen-100"
+  },
+  "missha-safe-block": {
+    "incidecoder": "missha-all-around-safe-block-essence-sun-milk-ex"
+  },
+  "torriden-sun-cream": {
+    "incidecoder": "torriden-dive-in-watery-moisture-sun-cream"
+  },
+  "kiehls-uv-defense": {
+    "incidecoder": "kiehls-ultra-light-daily-uv-defense-spf-50-pa-2"
+  },
+  "shiseido-ultimate-sun": {
+    "incidecoder": "shiseido-ultimate-sun-protector-lotion-spf-50-sunscreen"
+  },
+  "skinceuticals-physical-fusion": {
+    "incidecoder": "skinceuticals-physical-fusion-uv-defense-spf-50"
+  },
+  "heliocare-water-gel": {
+    "incidecoder": "heliocare-360-water-gel"
+  },
+  "lrp-uvmune-oil-control": {
+    "incidecoder": "la-roche-posay-anthelios-uvmune-400-oil-control-fluid-spf-50"
+  },
+  "bioderma-aquafluide": {
+    "incidecoder": "bioderma-photoderm-max-aquafluide-spf-50"
+  },
+  "nivea-water-gel": {
+    "incidecoder": "nivea-sun-protect-super-water-gel-spf50-pa"
+  },
+  "canmake-mermaid": {
+    "incidecoder": "canmake-mermaid-skin-gel-uv-spf-50"
+  },
+  "amlactin": {
+    "incidecoder": "amlactin-daily-moisturizing-body-lotion"
+  },
+  "gold-bond-rough-bumpy": {
+    "incidecoder": "goldbond-rough-and-bumpy-skin-lotion"
+  },
+  "aveeno-daily-lotion": {
+    "incidecoder": "aveeno-daily-moisturizing-lotion-new",
+    "momoSkip": true
+  },
+  "cetaphil-lotion": {
+    "incidecoder": "cetaphil-moisturizing-lotion"
+  },
+  "lrp-lipikar-ap": {
+    "incidecoder": "la-roche-posay-lipikar-baume-ap-m-2021"
+  },
+  "bioderma-atoderm-baume": {
+    "incidecoder": "bioderma-atoderm-intensive-baume"
+  },
+  "bio-oil": {
+    "incidecoder": "bio-oil-skincare-oil"
+  },
+  "clarins-body-fit": {
+    "incidecoder": "clarins-body-fit-active-skin-smoothing-expert"
+  },
+  "eucerin-urea-5": {
+    "incidecoder": "eucerin-urea-repair-plus-5-urea-lotion"
+  },
+  "vaseline-advanced-repair": {
+    "incidecoder": "vaseline-advanced-repair-body-lotion",
+    "momoSkip": true
+  },
+  "fab-kp-bump": {
+    "incidecoder": "first-aid-beauty-mini-kp-bump-eraser-body-scrub-with-10-aha"
   }
 }
