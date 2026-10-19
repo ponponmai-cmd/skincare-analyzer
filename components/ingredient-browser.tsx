@@ -5,11 +5,15 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { EvidenceBadge } from "@/components/marks";
 import { ingredients } from "@/lib/ingredients";
+import { ingredientName } from "@/lib/catalog";
 import {
   evidenceLabel,
   ingredientCategoryLabel,
   ingredientCategoryOrder,
+  irritancyLabel,
+  pregnancyLabel,
 } from "@/lib/labels";
+import { cn } from "cn";
 import type { Evidence, IngredientCategory } from "@/lib/types";
 import Link from "next/link";
 
@@ -26,7 +30,7 @@ export function IngredientBrowser() {
       if (category !== "all" && item.category !== category) return false;
       if (evidence !== "all" && item.evidence !== evidence) return false;
       if (!needle) return true;
-      return [item.nameZh, item.nameEn, item.inci, ...item.aliases, ...item.functions]
+      return [item.nameZh, item.nameEn, item.inci, ...item.aliases, ...item.functions, item.summary]
         .join(" ")
         .toLowerCase()
         .includes(needle);
@@ -89,14 +93,40 @@ export function IngredientBrowser() {
             <Link
               key={item.slug}
               href={`/ingredients/${item.slug}`}
-              className="grid gap-2 py-4 hover:bg-card md:grid-cols-[1.2fr_1fr_auto] md:items-center"
+              className="grid gap-3 py-4 hover:bg-card md:grid-cols-[minmax(0,0.9fr)_minmax(0,2fr)_auto] md:gap-6"
             >
-              <span>
+              <span className="min-w-0">
                 <span className="block font-serif text-2xl">{item.nameZh}</span>
-                <span className="text-sm text-muted-foreground">{item.nameEn}</span>
+                <span className="block text-sm text-muted-foreground">{item.nameEn}</span>
+                {item.inci.toLowerCase() !== item.nameEn.toLowerCase() ? (
+                  <span className="mt-1 block font-mono text-xs leading-5 break-words text-muted-foreground">
+                    {item.inci}
+                  </span>
+                ) : null}
               </span>
-              <span className="font-mono text-xs leading-5 text-muted-foreground">
-                {item.inci}
+              <span className="grid min-w-0 gap-1.5 text-sm leading-6">
+                <span>
+                  <span className="font-medium text-sage">功效：</span>
+                  {item.functions.join("、")}。{item.summary}
+                </span>
+                <span>
+                  <span className="font-medium text-cinnabar">注意：</span>
+                  {item.weaknesses.join("")}
+                  {item.cautionWith.length ? (
+                    <>避免同時疊擦：{item.cautionWith.map((entry) => ingredientName(entry.slug)).join("、")}。</>
+                  ) : null}
+                </span>
+                <span className="flex flex-wrap gap-1.5 text-xs">
+                  <span className={cn("border px-1.5 py-0.5", item.irritancy >= 3 ? "border-cinnabar/60 text-cinnabar" : "border-border text-muted-foreground")}>
+                    刺激度 {irritancyLabel[item.irritancy]}
+                  </span>
+                  <span className={cn("border px-1.5 py-0.5", item.pregnancy === "compatible" ? "border-border text-muted-foreground" : "border-cinnabar/60 text-cinnabar")}>
+                    {pregnancyLabel[item.pregnancy]}
+                  </span>
+                  {item.typicalRange ? (
+                    <span className="border border-border px-1.5 py-0.5 text-muted-foreground">濃度：{item.typicalRange}</span>
+                  ) : null}
+                </span>
               </span>
               <span className="flex flex-wrap gap-2 md:justify-end">
                 <EvidenceBadge evidence={item.evidence} />
