@@ -14,6 +14,8 @@ import { cn } from "cn";
 
 const links = [
   ["/pros", "查詢"],
+  ["/picks", "醫師選品"],
+  ["/claims", "宣稱查核"],
   ["/analyze", "成分表解析"],
   ["/ingredients", "成分"],
   ["/products", "產品"],
@@ -66,12 +68,12 @@ export function SiteHeader() {
             </span>
           </span>
         </Link>
-        <nav className="hidden items-center gap-4 lg:flex">
+        <nav className="hidden items-center gap-3.5 xl:flex">
           <NavLinks />
         </nav>
         <Sheet>
           <SheetTrigger
-            className="inline-flex size-10 items-center justify-center border border-border lg:hidden"
+            className="inline-flex size-10 items-center justify-center border border-border xl:hidden"
             aria-label="開啟選單"
           >
             <Menu className="size-4" />

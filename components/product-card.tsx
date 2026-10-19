@@ -2,7 +2,9 @@ import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { SaveCompareButton } from "@/components/compare-store";
 import { ProductImage } from "@/components/product-image";
+import { EfficacyMeter } from "@/components/evidence-blocks";
 import { Stars } from "@/components/stars";
+import { productEfficacy } from "@/lib/evidence";
 import { TierBadges } from "@/components/tier-badges";
 import { formatTwd, formatUnitPrice, formatVolume } from "@/lib/format";
 import { productCategoryLabel } from "@/lib/labels";
@@ -30,6 +32,10 @@ export function ProductCard({ product }: { product: Product }) {
           </h3>
           <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">{product.name}</p>
           <Stars slug={product.slug} showLabel={false} className="mt-1" />
+          <p className="mt-1 flex items-center gap-1.5 text-xs text-muted-foreground">
+            實際效果
+            <EfficacyMeter value={productEfficacy(product)} />
+          </p>
         </div>
       </div>
       <div className="mt-2 flex flex-wrap gap-1.5">

@@ -117,6 +117,8 @@ export default function HomePage() {
       <section className="mx-auto max-w-6xl px-5 pb-14">
         <div className="grid gap-4 md:grid-cols-3">
           {[
+            ["醫師選品", "適合台灣人肌膚的產品，依抗皺、美白、緊緻等目的排名：先看實際效果，再看值不值得與銷量。", "/picks"],
+            ["宣稱查核", "專櫃、精品、醫美品牌的主打宣稱，一條條對照醫學期刊：有證據、部分成立，還是沒有可信證據。", "/claims"],
             ["知名熱銷", "momo 銷量破千、大廠牌、成分清楚的瓶子。", "/products?tier=bestseller"],
             ["奢華款看成分", "買不起也可以先看：貴婦品牌裝了什麼、怎麼用、有沒有便宜的近親。", "/products?tier=luxury"],
             ["身體乳", "想讓身體更光滑、更緊緻：尿素、水楊酸、果酸與 A 醇身體乳。", "/products?goal=body-smooth"],

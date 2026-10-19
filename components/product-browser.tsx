@@ -10,6 +10,7 @@ import { goals } from "@/lib/goals";
 import { goalProducts } from "@/lib/lookup";
 import { isBestSeller, momoSales } from "@/lib/media";
 import { productRating } from "@/lib/ratings";
+import { productEfficacy } from "@/lib/evidence";
 import { productHaystack } from "@/lib/catalog";
 import {
   ageLabel,
@@ -25,7 +26,7 @@ import { productOrigin } from "@/lib/shopping";
 import type { AgeBand, Concern, Origin, ProductCategory } from "@/lib/types";
 
 type Tier = "all" | "bestseller" | "luxury" | "budget";
-type Sort = "unit" | "fit" | "rating" | "sales";
+type Sort = "unit" | "fit" | "efficacy" | "rating" | "sales";
 
 const tierOptions: readonly (readonly [Tier, string])[] = [
   ["all", "全部"],
@@ -36,6 +37,7 @@ const tierOptions: readonly (readonly [Tier, string])[] = [
 
 const sortOptions: readonly (readonly [Sort, string])[] = [
   ["fit", "最對症"],
+  ["efficacy", "實際效果"],
   ["unit", "單價低"],
   ["rating", "星等高"],
   ["sales", "銷量高"],
@@ -75,6 +77,8 @@ export function ProductBrowser() {
     const unit = (product: (typeof products)[number]) => product.priceTwd / product.volume;
     return filtered.sort((a, b) => {
       if (sort === "fit" && goalRank) return (goalRank.get(a.slug) ?? 0) - (goalRank.get(b.slug) ?? 0);
+      if (sort === "efficacy")
+        return productEfficacy(b) - productEfficacy(a) || productRating(b.slug) - productRating(a.slug) || unit(a) - unit(b);
       if (sort === "rating") return productRating(b.slug) - productRating(a.slug) || unit(a) - unit(b);
       if (sort === "sales") return momoSales(b.slug) - momoSales(a.slug) || unit(a) - unit(b);
       return unit(a) - unit(b);

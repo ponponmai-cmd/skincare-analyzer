@@ -27,6 +27,9 @@ PAGES_BASE_PATH=/skincare-analyzer npx next build
 
 ## 裡頭有什麼
 
+- 醫師選品（`/picks`）：適合台灣濕熱氣候與亞洲膚質的產品，每個臉部保養目的（抗皺、美白、緊緻、保濕、修護、泛紅、痘痘、控油、防曬）都有 30 項以上可以比較。排序先看「實際效果」，再看星等，最後才看 momo 銷量
+- 宣稱查核（`/claims`）：專櫃、精品、醫美・藥妝、開架與新興品牌的主打宣稱，逐條判定「有證據／部分成立／證據薄弱／沒有可信證據」，附 PubMed 文獻
+- 實際效果（1–5）：只看主成分的人體研究與濃度有沒有到有效範圍，和星等（值不值得買）分開；產品頁與成分頁都有「醫學期刊怎麼說」
 - 查詢：輸入想處理的問題（美白、抗皺、緊實拉提、痘痘、身體光滑…）、成分（含別名，例如 A醛＝視黃醛、左旋C、B5、CICA），或廠牌加品名（也認得小黑瓶、小棕瓶、乳霜之王等暱稱）
 - 成分頁：功效、機制，以及「一瓶要有多少才看得到效果」：最低有效濃度、最佳範圍、太多會怎樣、多久看得到
 - 產品頁：產品照片、值得留下星等（1–5 顆）、奢華款與 momo 銷量標示、怎麼用、完整成分表（每個成分的功效、注意事項與台灣法規限量，可切換「只看要注意的」），以及冤大頭檢查：先用 Google 看商品，再連到蝦皮、酷澎、momo（不用先登入）
@@ -46,6 +49,7 @@ PAGES_BASE_PATH=/skincare-analyzer npx next build
 - momo 銷量與售價：momo 搜尋結果頁公開資訊
 - 霓淨思產品：品牌官網
 - 台灣法規限量、限制與包裝應標示的注意事項：食藥署公開資料（[限用成分](https://data.gov.tw/dataset/173685)、[防腐劑](https://data.gov.tw/dataset/173682)、[防曬劑](https://data.gov.tw/dataset/173683)、[禁用成分](https://data.gov.tw/dataset/173684)）
+- 醫學文獻：PubMed，每篇都用 PMID 核對過標題；廠商資助的研究會標出來（`lib/references.ts`）
 - 蝦皮與酷澎會擋程式讀取，所以只提供經 Google 的搜尋連結，不顯示它們的銷量
 
 重新抓取：
@@ -64,4 +68,4 @@ node scripts/build-tfda.mjs --download  # 重新下載並整理
 node scripts/build-tfda.mjs             # 只用現有原始檔重新整理
 ```
 
-資料檔：`lib/ingredients*.ts`、`lib/ingredient-aliases.ts`（成分與別名），`lib/inci-dictionary*.ts`（成分表常見成分的中文名與用途），`lib/inci-explain.ts`（功效與注意事項的組合規則），`lib/products*.ts`（產品），`lib/doses.ts`（有效濃度），`lib/ratings.ts`（星等），`lib/goals.ts`（想處理的問題），`lib/night-routines.ts`、`lib/masks.ts`（晚間保養與面膜）。
+資料檔：`lib/ingredients*.ts`、`lib/ingredient-aliases.ts`（成分與別名），`lib/inci-dictionary*.ts`（成分表常見成分的中文名與用途），`lib/inci-explain.ts`（功效與注意事項的組合規則），`lib/products*.ts`（產品），`lib/doses.ts`（有效濃度），`lib/ratings.ts`（星等），`lib/references.ts`（文獻與成分對應），`lib/evidence.ts`（實際效果、宣稱判定、品牌分類），`lib/product-evidence.ts`（既有產品的宣稱查核），`lib/goals.ts`（想處理的問題），`lib/night-routines.ts`、`lib/masks.ts`（晚間保養與面膜）。
